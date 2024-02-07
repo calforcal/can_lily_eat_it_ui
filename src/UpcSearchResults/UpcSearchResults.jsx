@@ -1,3 +1,4 @@
+import { useState } from "react";
 import "./UpcSearchResults.css"
 
 function UpcSearchResults({result}) {
@@ -9,10 +10,15 @@ function UpcSearchResults({result}) {
     lilyEat: result.data.attributes.lily_eat
   }
 
-  console.log(allergen)
+  console.log(allergen.lilyEat)
 
   return (
-    <></>
+    <>
+      <h2>Food Item: {allergen.name}</h2>
+      <p>Ingredients{allergen.ingredients}</p>
+      <h4>Allergens Found: {allergen.allergens}</h4>
+      <h3>Can Lily eat it? {allergen.lilyEat.toString()}</h3>
+    </>
   );
 }
 
