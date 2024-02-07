@@ -4,8 +4,15 @@ import { useState } from "react";
 function UpcSearchBar({ setResult }) {
   const [input, setInput] = useState("");
 
+  // const fetchData = (value) => {
+  //   fetch(`https://27965142-cb65-4b7c-9f97-05e599e7c347.mock.pstmn.io/api/v1/allergens?upc=${value}`)
+  //   .then((response) => response.json())
+  //   .then((data) => setResult(data))
+  //   .catch((err) => console.log(err))
+  // };
+
   const fetchData = (value) => {
-    fetch(`https://27965142-cb65-4b7c-9f97-05e599e7c347.mock.pstmn.io/api/v1/allergens?upc=${value}`)
+    fetch(`http://127.0.0.1:3000/api/v1/allergens?upc=${value}`)
     .then((response) => response.json())
     .then((data) => setResult(data))
     .catch((err) => console.log(err))
