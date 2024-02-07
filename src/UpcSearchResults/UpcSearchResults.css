@@ -1,0 +1,36 @@
+.food-result-container {
+  display: inline-flex;
+  border-top: 3px solid black;
+  border-right: 3px solid black;
+  border-bottom: 3px solid black;
+  width: 50%;
+}
+
+ul {
+  list-style: none;
+  text-align: left;
+  margin: 0 auto;
+  font-size: 20px;
+}
+
+li {
+  margin: 20px 10px;
+}
+
+.food-item {
+  font-size: 30px;
+}
+
+.ingredients-label, .allergens-label, .can-lily-eat-it-label {
+  font-size: 24px;
+  text-decoration: underline;
+  margin: 5px 10px;
+}
+
+.food-ingredients, .food-allergens-found, .food-lily-eat {
+  margin: 5px 10px;
+}
+
+.food-lily-eat {
+  font-size: xx-large;
+}
