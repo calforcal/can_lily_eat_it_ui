@@ -5,20 +5,25 @@ function UpcSearchResults({result}) {
 
   const allergen = {
     name: result.data.attributes.name,
-    ingredients: result.data.attributes.ingredients,
-    allergens: result.data.attributes.allergens,
+    ingredients: result.data.attributes.ingredients.join(", "),
+    allergens: result.data.attributes.allergens.join(", "),
     lilyEat: result.data.attributes.lily_eat
   }
 
-  console.log(allergen.lilyEat)
-
   return (
-    <>
-      <h2>Food Item: {allergen.name}</h2>
-      <p>Ingredients{allergen.ingredients}</p>
-      <h4>Allergens Found: {allergen.allergens}</h4>
-      <h3>Can Lily eat it? {allergen.lilyEat.toString()}</h3>
-    </>
+    <div className="food-result-container">
+      <ul>
+        <li className="food-item">{allergen.name}</li>
+        <li className="ingredients-label">Ingredients</li>
+        <li className="food-ingredients">{allergen.ingredients}</li>
+        <br></br>
+        <li className="allergens-label">Allergens Found</li>
+        <li className="food-allergens-found">{allergen.allergens}</li>
+        <br></br>
+        <li className="can-lily-eat-it-label">Can Lily Eat It?</li>
+        <li className="food-lily-eat">{allergen.lilyEat ? "Yes, she can!" : "ABSOLUTELY NOT" }</li>
+      </ul>
+    </div>
   );
 }
 
