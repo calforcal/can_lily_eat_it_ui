@@ -13,12 +13,14 @@ function App() {
   return (
     <>
       <MainHeading />
-      <UpcSearchBar setResult={setResult} />
-      { result ?
-          <UpcSearchResults result={result}/>
-        :
-        <></>
-      }
+      <div className="app-search-container">
+        <UpcSearchBar setResult={setResult} />
+        { result ?
+            <UpcSearchResults result={result}/>
+          :
+          <></>
+        }
+      </div>
     </>
   )
 }
