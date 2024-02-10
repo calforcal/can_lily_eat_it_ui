@@ -21,11 +21,9 @@ function HomePage() {
             <p>Demo Profile 2</p>
           </div>
         </div>
-        <div className="skip-login-container">
-          <Link className="skip-login-button" to="/search">
-            <button>Skip These for now (limited access)</button>
-          </Link>
-        </div>
+        <Link className="skip-login-button" to="/search">
+          <button>Skip These for now</button>
+        </Link>
       </div>
     </>
   );
