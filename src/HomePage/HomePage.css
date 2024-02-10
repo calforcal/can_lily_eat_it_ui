@@ -1,0 +1,52 @@
+.home-page-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50%;
+  margin: 50px auto;
+  background-color: rgb(245, 207, 156, .5);
+  border: 2px solid gray;
+  border-radius: 25px;
+}
+
+.login-register-container button{
+  display: inline-flex;
+  border: 2px solid black;
+  border-radius: 8px;
+  margin-left: 10px;
+  height: 75px;
+  width: 150px;
+  margin-top: 20px;
+  background-color: aliceblue;
+  justify-content: center;
+  align-items: center;
+  margin: 30px;
+}
+
+.skip-login-button {
+  border: 2px solid black;
+  border-radius: 8px;
+  margin-left: 10px;
+  width: 150px;
+  margin-top: 20px;
+  background-color: aliceblue;
+}
+
+.demo-profile-container {
+  display: flex;
+}
+
+.demo-profile-1, .demo-profile-2 {
+  margin: 40px;
+  text-align: center;
+}
+
+.demo-profile-1 p, .demo-profile-2 p {
+  margin: 10px;
+}
+
+.mr-pic, .rr-pic {
+  height: 130px;
+  width: 130px;
+  border-radius: 100px;
+}
