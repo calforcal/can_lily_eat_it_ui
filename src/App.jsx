@@ -9,8 +9,6 @@ import UpcSearchResults from './UpcSearchResults/UpcSearchResults'
 
 function App() {
 
-  const [result, setResult] = useState();
-
   return (
     <>
       <Routes>
