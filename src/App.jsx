@@ -1,6 +1,7 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { React, useState } from 'react'
+import { Routes, Route } from 'react-router-dom'
+import HomePage from './HomePage/HomePage'
+import SearchPage from './SearchPage/SearchPage'
 import './App.css'
 import MainHeading from '/src/MainHeading/MainHeading'
 import UpcSearchBar from '/src/UpcSearchBar/UpcSearchBar'
@@ -12,17 +13,12 @@ function App() {
 
   return (
     <>
-      <MainHeading />
-      <div className="app-search-container">
-        <UpcSearchBar setResult={setResult} />
-        { result ?
-            <UpcSearchResults result={result}/>
-          :
-          <></>
-        }
-      </div>
+      <Routes>
+        <Route path='/' element={<HomePage />} />
+        <Route path="/search" element={<SearchPage />} />
+      </Routes>
     </>
-  )
+  );
 }
 
 export default App;
