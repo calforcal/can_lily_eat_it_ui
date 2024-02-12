@@ -8,8 +8,12 @@ function HomePage() {
       <MainHeading />
       <div className="home-page-container">
         <div className="login-register-container">
-          <button>Login</button>
-          <button>Create Account</button>
+          <Link className="login-button" to="/login">
+            <button>Login</button>
+          </Link>
+          <Link className="create-account-button" to="/register">
+            <button>Create Account</button>
+          </Link>
         </div>
         <div className="demo-profile-container">
           <div className="demo-profile-1">
@@ -22,7 +26,7 @@ function HomePage() {
           </div>
         </div>
         <Link className="skip-login-button" to="/search">
-          <button>Skip These for now</button>
+          Skip These for now
         </Link>
       </div>
     </>
