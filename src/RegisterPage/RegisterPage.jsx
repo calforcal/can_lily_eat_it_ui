@@ -1,15 +1,18 @@
 import { useState } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import MainHeading from "../MainHeading/MainHeading";
 import "./RegisterPage.css"
 
 function RegisterPage() {
+
+  const navigate = useNavigate();
   
   const [email, setEmail] = useState()
   const [name, setName] = useState()
   const [password, setPassword] = useState()
   const [passwordConfirmation, setPasswordConfirmation] = useState()
   const [formData, setFormData] = useState()
+  const [userData, setUserData] = useState()
 
   const handleRegisterInfo = (type, value) => {
     if (type == "email") {
@@ -46,7 +49,10 @@ function RegisterPage() {
       }
       // return response.json()
     })
-    .then((data) => console.log(data))
+    .then((data) => {
+      setUserData(data.data)
+      navigate("/profile")
+    })
     .catch((err) => console.log(err))
   };
 
