@@ -2,6 +2,7 @@ import { React, useState } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import HomePage from './HomePage/HomePage'
 import SearchPage from './SearchPage/SearchPage'
+import RegisterPage from './RegisterPage/RegisterPage'
 import './App.css'
 import MainHeading from '/src/MainHeading/MainHeading'
 import UpcSearchBar from '/src/UpcSearchBar/UpcSearchBar'
@@ -14,6 +15,8 @@ function App() {
       <Routes>
         <Route path='/' element={<HomePage />} />
         <Route path="/search" element={<SearchPage />} />
+        <Route path="/register" element={<RegisterPage />} />
+        {/* <Route path="/login" element={<LoginPage />} /> */}
       </Routes>
     </>
   );
