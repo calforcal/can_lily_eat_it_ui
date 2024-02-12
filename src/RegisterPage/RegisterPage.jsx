@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useDebugValue, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import MainHeading from "../MainHeading/MainHeading";
 import "./RegisterPage.css"
@@ -51,7 +51,7 @@ function RegisterPage() {
     })
     .then((data) => {
       setUserData(data.data)
-      navigate("/profile")
+      navigate("/profile", {user_id: userData.id})
     })
     .catch((err) => console.log(err))
   };
