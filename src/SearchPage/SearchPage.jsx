@@ -1,7 +1,7 @@
 import "./SearchPage.css"
 import { useState } from "react";
 import MainHeading from "../MainHeading/MainHeading";
-import UpcSearchResults from "../UpcSearchResults/UpcSearchResults";
+import FoodCard from "../FoodCard/FoodCard";
 import UpcSearchBar from "../UpcSearchBar/UpcSearchBar";
 
 function SearchPage() {
@@ -14,7 +14,7 @@ function SearchPage() {
       <div className="app-search-container">
         <UpcSearchBar setResult={setResult} />
         { result ?
-            <UpcSearchResults result={result}/>
+            <FoodCard result={result.data}/>
           :
           <></>
         }
