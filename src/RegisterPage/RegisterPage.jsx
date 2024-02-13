@@ -1,4 +1,4 @@
-import { useDebugValue, useState } from "react";
+import { useDebugValue, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import MainHeading from "../MainHeading/MainHeading";
 import "./RegisterPage.css"
@@ -31,12 +31,12 @@ function RegisterPage() {
 
   const makeApiCall = async () => {
     fetch('https://27965142-cb65-4b7c-9f97-05e599e7c347.mock.pstmn.io/api/v1/users', {
-      Method: 'POST',
-      Headers: {
+      method: 'POST',
+      headers: {
         Accept: 'application.json',
         'Content-Type': 'application/json'
       },
-      Body: JSON.stringify(formData)
+      body: JSON.stringify(formData)
     })
     .then((response) => {
       if (!response.ok) {
@@ -53,11 +53,18 @@ function RegisterPage() {
     .catch((err) => console.log(err))
   };
 
+  useEffect(() => {
+    // Check if userData is not null before navigating
+    if (userData) {
+      navigate("/profile", { state: userData.id });
+    }
+  }, [userData, navigate]);
+
   // Needs FIX: Button must be pressed twice for page redirect.
   const postUserRegistration = async () => {
     setFormData({name: name, email: email, password: password, passwordConfirmation: passwordConfirmation})
+
     await makeApiCall();
-    navigate("/profile", {state: userData.id})
   };
 
   return (
