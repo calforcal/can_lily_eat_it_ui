@@ -1,4 +1,4 @@
-import { useDebugValue, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import MainHeading from "../MainHeading/MainHeading";
 import "./RegisterPage.css"
