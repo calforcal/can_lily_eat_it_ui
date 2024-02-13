@@ -29,9 +29,7 @@ function RegisterPage() {
     }
   };
 
-  const postUserRegistration = () => {
-    setFormData({name: name, email: email, password: password, passwordConfirmation: passwordConfirmation})
-
+  const makeApiCall = async () => {
     fetch('https://27965142-cb65-4b7c-9f97-05e599e7c347.mock.pstmn.io/api/v1/users', {
       Method: 'POST',
       Headers: {
@@ -51,9 +49,14 @@ function RegisterPage() {
     })
     .then((data) => {
       setUserData(data.data)
-      navigate("/profile", {user_id: userData.id})
     })
     .catch((err) => console.log(err))
+  };
+
+  const postUserRegistration = async () => {
+    setFormData({name: name, email: email, password: password, passwordConfirmation: passwordConfirmation})
+    await makeApiCall();
+    navigate("/profile", {state: userData.id})
   };
 
   return (
