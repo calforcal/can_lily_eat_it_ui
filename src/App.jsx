@@ -3,10 +3,11 @@ import { Routes, Route } from 'react-router-dom'
 import HomePage from './HomePage/HomePage'
 import SearchPage from './SearchPage/SearchPage'
 import RegisterPage from './RegisterPage/RegisterPage'
+import ProfilePage from './ProfilePage/ProfilePage'
 import './App.css'
 import MainHeading from '/src/MainHeading/MainHeading'
 import UpcSearchBar from '/src/UpcSearchBar/UpcSearchBar'
-import UpcSearchResults from './UpcSearchResults/UpcSearchResults'
+import FoodCard from './FoodCard/FoodCard'
 
 function App() {
 
@@ -17,6 +18,7 @@ function App() {
         <Route path="/search" element={<SearchPage />} />
         <Route path="/register" element={<RegisterPage />} />
         {/* <Route path="/login" element={<LoginPage />} /> */}
+        <Route path="/profile" element={<ProfilePage />} />
       </Routes>
     </>
   );
