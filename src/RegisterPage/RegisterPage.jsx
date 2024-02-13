@@ -53,6 +53,7 @@ function RegisterPage() {
     .catch((err) => console.log(err))
   };
 
+  // Needs FIX: Button must be pressed twice for page redirect.
   const postUserRegistration = async () => {
     setFormData({name: name, email: email, password: password, passwordConfirmation: passwordConfirmation})
     await makeApiCall();
