@@ -23,7 +23,7 @@ function LoginPage() {
 
   const makeApiCall = async () => {
     fetch('https://27965142-cb65-4b7c-9f97-05e599e7c347.mock.pstmn.io/api/v1/users', {
-      method: 'GET',
+      method: 'POST',
       headers: {
         Accept: 'application.json',
         'Content-Type': 'application/json'
