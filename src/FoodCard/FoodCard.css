@@ -1,4 +1,4 @@
-.food-result-container {
+.food-result-container-search {
   display: inline-flex;
   border-top: 3px solid black;
   border-right: 3px solid black;
@@ -17,20 +17,49 @@ li {
   margin: 20px 10px;
 }
 
-.food-item {
+.food-item-search {
   font-size: 30px;
 }
 
-.ingredients-label, .allergens-label, .can-lily-eat-it-label {
+.ingredients-label-search, .allergens-label-search, .can-lily-eat-it-label-search {
   font-size: 24px;
   text-decoration: underline;
   margin: 5px 10px;
 }
 
-.food-ingredients, .food-allergens-found, .food-lily-eat {
+.food-ingredients-search, .food-allergens-found-search, .food-lily-eat-search {
   margin: 5px 10px;
 }
 
-.food-lily-eat {
+.food-lily-eat-search {
+  font-size: xx-large;
+}
+
+.food-result-container-profile {
+  display: inline-flex;
+  margin: 20px;
+  border: 3px rgb(0, 247, 255) solid;
+  padding: 10px;
+  border-radius: 40px;
+  width: 400px;
+  height: 400px;
+  background-color: rgb(248, 226, 197);
+}
+
+.food-item-profile {
+  font-size: 30px;
+}
+
+.ingredients-label-profile, .allergens-label-profile, .can-lily-eat-it-label-profile {
+  font-size: 24px;
+  text-decoration: underline;
+  margin: 5px 10px;
+}
+
+.food-ingredients-profile, .food-allergens-found-profile, .food-lily-eat-profile {
+  margin: 5px 10px;
+}
+
+.food-lily-eat-profile {
   font-size: xx-large;
 }
