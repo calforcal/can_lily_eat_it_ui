@@ -14,7 +14,7 @@ function SearchPage() {
       <div className="app-search-container">
         <UpcSearchBar setResult={setResult} />
         { result ?
-            <FoodCard result={result.data}/>
+            <FoodCard result={result.data} extraClass="-search"/>
           :
           <></>
         }
