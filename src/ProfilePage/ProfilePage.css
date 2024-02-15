@@ -1,0 +1,16 @@
+.foods-container {
+  display: flex;
+  justify-content: center;
+}
+
+.bad-foods-title, .good-foods-title {
+  font-size: 30px;
+  margin-top: 20px;
+}
+
+.good-foods-container, .bad-foods-container {
+  display: flex;
+  flex-direction: column;
+  width: 45%;
+  align-items: center;
+}
