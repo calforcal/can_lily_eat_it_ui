@@ -37,6 +37,7 @@ li {
 
 .food-result-container-profile {
   display: inline-flex;
+  flex-direction: column;
   margin: 20px;
   border: 3px rgb(0, 247, 255) solid;
   padding: 10px;
