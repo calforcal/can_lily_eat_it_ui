@@ -1,7 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./FoodCard.css"
 
-function FoodCard({result, extraClass}) {
+function FoodCard({result, extraClass, userId}) {
+
+  const [savedFood, setSavedFood] = useState(false);
+  const navigate = useNavigate();
 
   const allergen = {
     name: result.attributes.name,
@@ -9,6 +13,43 @@ function FoodCard({result, extraClass}) {
     allergens: result.attributes.allergens.join(", "),
     lilyEat: result.attributes.lily_eat
   }
+
+  const foodData = {
+    name: result.attributes.name,
+    ingredients: result.attributes.ingredients,
+    allergens: result.attributes.allergens,
+    lilyEat: result.attributes.lily_eat
+  }
+
+  const postSavedFood = () => {
+    fetch(`https://27965142-cb65-4b7c-9f97-05e599e7c347.mock.pstmn.io/api/v1/users/${userId}/foods`, {
+      method: 'POST',
+      headers: {
+        Accept: 'application.json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(foodData)
+    })
+    .then((response) => {
+      if (!response.ok) {
+        alert("Something went wrong, please try again.")
+      } else {
+        return response.json()
+      }
+    })
+    .then(setSavedFood(true))
+  };
+
+  useEffect(() => {
+    if (savedFood) {
+      navigate("/profile", { state: userId });
+    }
+  }, [savedFood]);
+
+  const handleSave = () => {
+    console.log("doing it");
+    postSavedFood();
+  };
 
   return (
     <>
@@ -29,7 +70,14 @@ function FoodCard({result, extraClass}) {
           ?
           <button>Unsave Food</button>
           :
-          <button>Save Food</button>
+          null
+        }
+        {
+          userId
+          ?
+          <button onClick={() => {handleSave()}}>Save Food</button>
+          :
+          null
         }
       </div>
     </>
