@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import "./ProfilePage.css"
-import { useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 import FoodCard from "../FoodCard/FoodCard";
 import MainHeading from "../MainHeading/MainHeading";
 
@@ -46,10 +46,12 @@ function ProfilePage() {
     getGoodFoods();
   }, [foods]);
 
-
   return (
     <>
       <MainHeading />
+      <div className="search-link-container">
+        <Link to="/search" state={{userId: user_id}}>To Search Page</Link>
+      </div>
       <div className="foods-container">
         <div className="bad-foods-container">
           <h1 className="bad-foods-title">BAD FOODS</h1>
