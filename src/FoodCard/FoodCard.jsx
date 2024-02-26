@@ -11,7 +11,8 @@ function FoodCard({result, extraClass, userId}) {
     name: result.attributes.name,
     ingredients: result.attributes.ingredients.join(", "),
     allergens: result.attributes.allergens.join(", "),
-    lilyEat: result.attributes.lily_eat
+    lilyEat: result.attributes.lily_eat,
+    foodId: result.id
   }
 
   const foodData = {
@@ -20,6 +21,21 @@ function FoodCard({result, extraClass, userId}) {
     allergens: result.attributes.allergens,
     lilyEat: result.attributes.lily_eat
   }
+
+  const deleteSavedFood = () => {
+    fetch(`https://27965142-cb65-4b7c-9f97-05e599e7c347.mock.pstmn.io/api/v1/users/${userId}/foods/${allergen.foodId}`, {
+      method: 'DELETE',
+      headers: {
+        Accept: 'application.json',
+        'Content-Type': 'application/json'
+      }
+    })
+  }
+
+  const handleUnsavedFood = () => {
+    deleteSavedFood();
+    console.log("deleted")
+  };
 
   const postSavedFood = () => {
     fetch(`https://27965142-cb65-4b7c-9f97-05e599e7c347.mock.pstmn.io/api/v1/users/${userId}/foods`, {
@@ -47,7 +63,6 @@ function FoodCard({result, extraClass, userId}) {
   }, [savedFood]);
 
   const handleSave = () => {
-    console.log("doing it");
     postSavedFood();
   };
 
@@ -68,12 +83,12 @@ function FoodCard({result, extraClass, userId}) {
         {
           extraClass == "-profile"
           ?
-          <button>Unsave Food</button>
+          <button onClick={() => {handleUnsavedFood()}}>Unsave Food</button>
           :
           null
         }
         {
-          userId
+          userId && extraClass != "-profile"
           ?
           <button onClick={() => {handleSave()}}>Save Food</button>
           :
