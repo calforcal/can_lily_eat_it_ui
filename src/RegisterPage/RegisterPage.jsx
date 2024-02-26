@@ -45,7 +45,6 @@ function RegisterPage() {
       else {
         return response.json()
       }
-      // return response.json()
     })
     .then((data) => {
       setUserData(data.data)
