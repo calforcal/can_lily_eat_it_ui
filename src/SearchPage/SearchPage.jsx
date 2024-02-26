@@ -8,7 +8,17 @@ import { useLocation } from "react-router-dom";
 function SearchPage() {
 
   const location = useLocation();
-  const userId = location.state.userId;
+
+  const setUserId = () => {
+    if (location.state) {
+      return location.state.userId;
+    } else {
+      return null;
+    }
+  }
+
+  const userId = setUserId();
+
   const [result, setResult] = useState();
 
   return (
@@ -19,7 +29,7 @@ function SearchPage() {
         { result ?
             <FoodCard result={result.data} extraClass="-search" userId={userId} />
           :
-          <></>
+            <></>
         }
       </div>
     </>
