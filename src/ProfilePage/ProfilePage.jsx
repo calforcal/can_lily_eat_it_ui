@@ -57,7 +57,7 @@ function ProfilePage() {
           <h1 className="bad-foods-title">BAD FOODS</h1>
           { badFoods ?
               badFoods.map((food) => (
-                <FoodCard result={food} extraClass={"-profile"} />
+                <FoodCard result={food} extraClass={"-profile"} userId={user_id} />
               ))
             :
               <h1>Nothing to see</h1>
@@ -67,7 +67,7 @@ function ProfilePage() {
           <h1 className="good-foods-title">GOOD FOODS</h1>
           { goodFoods ?
               goodFoods.map((food) => (
-                <FoodCard result={food} extraClass={"-profile"}/>
+                <FoodCard result={food} extraClass={"-profile"} userId={user_id}/>
               ))
             :
               <h1>Nothing to see</h1>
