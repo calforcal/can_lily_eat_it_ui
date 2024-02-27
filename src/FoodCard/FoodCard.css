@@ -64,3 +64,7 @@ li {
 .food-lily-eat-profile {
   font-size: xx-large;
 }
+
+button {
+  cursor: pointer;
+}
