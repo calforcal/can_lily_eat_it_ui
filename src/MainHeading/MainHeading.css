@@ -1,7 +1,13 @@
-.main-header {
+.header-container {
+  display: flex;
   background-color: rgb(50, 123, 240);
-  padding: 2rem;
-  font-size: 40px;
   margin: 0;
   border-bottom: 7px solid rgb(172, 20, 222);
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.main-header {
+  padding: 2rem;
+  font-size: 40px;
 }
