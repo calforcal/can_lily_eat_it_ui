@@ -1,0 +1,12 @@
+.links-container {
+  display: flex;
+  justify-content: space-evenly;
+  width: 400px;
+  text-decoration: none;
+}
+
+a:-webkit-any-link {
+  text-decoration: none;
+  color: white;
+  cursor: pointer;
+}
