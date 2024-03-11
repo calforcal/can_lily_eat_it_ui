@@ -1,13 +1,23 @@
 import "./NavBar.css"
 import { Link } from "react-router-dom"
 
-function NavBar() {
+function NavBar({userId}) {
   return (
-    <div className="links-container">
-      <Link className="profile-link" to="/profile">Profile</Link>
-      <Link className="logout-link" to="/home">Log Out</Link>
-      <Link className="search-link" to="/search">Search Page</Link>
-    </div>
+    <>
+      {
+        userId ?
+        <div className="links-container">
+          <Link className="profile-link" to="/profile" state={userId}>Profile</Link>
+          <Link className="search-link" to="/search" state={userId}>Search</Link>
+          <Link className="logout-link" to="/">Log Out</Link>
+        </div>
+        :
+        <div className="links-container">
+          <Link className="logout-link" to="/">Home</Link>
+          <Link className="search-link" to="/search">Search</Link>
+        </div>
+      }
+    </>
   );
 };
 
