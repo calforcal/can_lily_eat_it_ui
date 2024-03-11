@@ -17,14 +17,14 @@ function ProfilePage() {
     fetch(`https://27965142-cb65-4b7c-9f97-05e599e7c347.mock.pstmn.io/api/v1/users/${user_id}/foods`)
     .then(response => response.json())
     .then(data => setFoods(data.data))
-    .catch(err => console.logg(err))
+    .catch(err => console.log(err))
   }, []);
 
   useEffect(() => {
     fetch(`https://27965142-cb65-4b7c-9f97-05e599e7c347.mock.pstmn.io/api/v1/users/${user_id}`)
     .then(response => response.json())
     .then(data => setUser(data.data))
-    .catch(err => console.logg(err))
+    .catch(err => console.log(err))
   }, []);
 
   const getBadFoods = () => {
@@ -48,9 +48,8 @@ function ProfilePage() {
 
   return (
     <>
-      <MainHeading />
+      <MainHeading userId={user_id}/>
       <div className="search-link-container">
-        <Link to="/search" state={{userId: user_id}}>To Search Page</Link>
       </div>
       <div className="foods-container">
         <div className="bad-foods-container">
