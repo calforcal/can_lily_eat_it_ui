@@ -1,8 +1,22 @@
 .links-container {
   display: flex;
   justify-content: space-evenly;
-  width: 400px;
+  width: 500px;
   text-decoration: none;
+}
+
+.profile-link, .logout-link, .search-link {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.profile-link:hover, .logout-link:hover, .search-link:hover {
+  color: blueviolet;
+  font-size: 28px;
+  font-weight: 800;
+  border-radius: 25px;
+  background-color: aqua;
+  padding: 5px;
 }
 
 a:-webkit-any-link {
