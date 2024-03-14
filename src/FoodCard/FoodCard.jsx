@@ -17,6 +17,7 @@ function FoodCard({result, extraClass, userId}) {
 
   const foodData = {
     name: result.attributes.name,
+    upcCode: result.attributes.upc_code,
     ingredients: result.attributes.ingredients,
     allergens: result.attributes.allergens,
     lilyEat: result.attributes.lily_eat
