@@ -21,14 +21,15 @@ function LoginPage() {
     }
   };
 
-  const makeApiCall = async () => {
-    fetch('https://27965142-cb65-4b7c-9f97-05e599e7c347.mock.pstmn.io/api/v1/users', {
+  const makeApiCall = async (email, password) => {
+    // fetch('https://27965142-cb65-4b7c-9f97-05e599e7c347.mock.pstmn.io/api/v1/users', {
+    fetch('http://127.0.0.1:3000/api/v1/sessions', {
       method: 'POST',
       headers: {
-        Accept: 'application.json',
+        Accept: 'application/json',
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(formData)
+      body: JSON.stringify({email: email, password: password})
     })
     .then((response) => {
       if (!response.ok) {
@@ -52,9 +53,7 @@ function LoginPage() {
   }, [userData, navigate]);
 
   const postUserRegistration = async () => {
-    setFormData({email: email, password: password})
-
-    await makeApiCall();
+    await makeApiCall(email, password);
   };
 
   return (
