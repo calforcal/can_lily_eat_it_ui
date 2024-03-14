@@ -11,7 +11,6 @@ function RegisterPage() {
   const [name, setName] = useState()
   const [password, setPassword] = useState()
   const [passwordConfirmation, setPasswordConfirmation] = useState()
-  const [formData, setFormData] = useState()
   const [userData, setUserData] = useState()
 
   const handleRegisterInfo = (type, value) => {
@@ -29,14 +28,14 @@ function RegisterPage() {
     }
   };
 
-  const makeApiCall = async () => {
-    fetch('https://27965142-cb65-4b7c-9f97-05e599e7c347.mock.pstmn.io/api/v1/users', {
+  const makeApiCall = async (email, name, password, passwordConfirmation) => {
+    fetch('http://127.0.0.1:3000/api/v1/users', {
       method: 'POST',
       headers: {
-        Accept: 'application.json',
+        Accept: 'application/json',
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(formData)
+      body: JSON.stringify({email: email, name: name, password: password, password_confirmation: passwordConfirmation})
     })
     .then((response) => {
       if (!response.ok) {
@@ -61,9 +60,7 @@ function RegisterPage() {
 
   // Needs FIX: Button must be pressed twice for page redirect.
   const postUserRegistration = async () => {
-    setFormData({name: name, email: email, password: password, passwordConfirmation: passwordConfirmation})
-
-    await makeApiCall();
+    await makeApiCall(email, name, password, passwordConfirmation);
   };
 
   return (
