@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { React, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./FoodCard.css"
 
@@ -17,32 +17,18 @@ function FoodCard({result, extraClass, userId}) {
 
   const foodData = {
     name: result.attributes.name,
-    upcCode: result.attributes.upc_code,
+    upc_code: result.attributes.upc_code,
     ingredients: result.attributes.ingredients,
     allergens: result.attributes.allergens,
-    lilyEat: result.attributes.lily_eat
+    lily_eat: result.attributes.lily_eat
   }
-
-  const deleteSavedFood = () => {
-    fetch(`https://27965142-cb65-4b7c-9f97-05e599e7c347.mock.pstmn.io/api/v1/users/${userId}/foods/${allergen.foodId}`, {
-      method: 'DELETE',
-      headers: {
-        Accept: 'application.json',
-        'Content-Type': 'application/json'
-      }
-    })
-  }
-
-  const handleUnsavedFood = () => {
-    deleteSavedFood();
-    console.log("deleted")
-  };
 
   const postSavedFood = () => {
-    fetch(`https://27965142-cb65-4b7c-9f97-05e599e7c347.mock.pstmn.io/api/v1/users/${userId}/foods`, {
+    // fetch(`https://27965142-cb65-4b7c-9f97-05e599e7c347.mock.pstmn.io/api/v1/users/${userId}/foods`, {
+    fetch(`http://127.0.0.1:3000/api/v1/users/${userId}/foods`, {
       method: 'POST',
       headers: {
-        Accept: 'application.json',
+        Accept: 'application/json',
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(foodData)
@@ -81,13 +67,6 @@ function FoodCard({result, extraClass, userId}) {
           <li className={"can-lily-eat-it-label" + extraClass}>Can Lily Eat It?</li>
           <li className={"food-lily-eat" + extraClass}>{allergen.lilyEat ? "Yes, she can!" : "ABSOLUTELY NOT" }</li>
         </ul>
-        {
-          extraClass == "-profile"
-          ?
-          <button onClick={() => {handleUnsavedFood()}}>Unsave Food</button>
-          :
-          null
-        }
         {
           userId && extraClass != "-profile"
           ?
