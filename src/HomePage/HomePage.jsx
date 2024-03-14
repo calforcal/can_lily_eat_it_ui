@@ -9,16 +9,16 @@ function HomePage() {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [userData, setUserData] = useState();
-  const [formData, setFormData] = useState();
 
-  const makeApiCall = () => {
-    fetch('https://27965142-cb65-4b7c-9f97-05e599e7c347.mock.pstmn.io/api/v1/users', {
+  const makeApiCall = (email, password) => {
+    // fetch('https://27965142-cb65-4b7c-9f97-05e599e7c347.mock.pstmn.io/api/v1/users', {
+    fetch('http://127.0.0.1:3000/api/v1/sessions', {
       method: 'POST',
       headers: {
-        Accept: 'application.json',
+        Accept: 'application/json',
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(formData)
+      body: JSON.stringify({email: email, password: password})
     })
     .then((response) => {
       if (!response.ok) {
@@ -40,13 +40,23 @@ function HomePage() {
     }
   }, [userData, navigate]);
 
-  const getDemoLogin = (demo_email, demo_password) => {
-    setEmail(demo_email);
-    setPassword(demo_password);
-    setFormData({email: password, password: email});
-
-    makeApiCall();
+  const getDemoLogin = (demoVersion) => {
+    if (demoVersion == 1) {
+      setEmail("demo1@gmail.com");
+    }
+    else {
+      setEmail("demo2@gmail.com");
+    }
+    setPassword("mickey123");
   };
+
+  useEffect(() => {
+    if (email && password) {
+      makeApiCall(email, password);
+    }
+  }, [email, password])
+
+
 
   return (
     <>
@@ -62,11 +72,11 @@ function HomePage() {
         </div>
         <div className="demo-profile-container">
           <div className="demo-profile-1">
-            <img className="mr-pic" src="./src/assets/images/mr-1.jpeg" alt="maggie-rogers" onClick={() => getDemoLogin({demo_email:"mickey@gmail.com", demo_password:"mickey"})}/>
+            <img className="mr-pic" src="./src/assets/images/mr-1.jpeg" alt="maggie-rogers" onClick={() => getDemoLogin(1)}/>
             <p>Demo Profile 1</p>
           </div>
           <div className="demo-profile-2">
-            <img className="rr-pic" src="./src/assets/images/rr-1.jpeg" alt="renee-rogers" onClick={() => getDemoLogin({demo_email:"donald@gmail.com", demo_password:"donald"})} />
+            <img className="rr-pic" src="./src/assets/images/rr-1.jpeg" alt="renee-rogers" onClick={() => getDemoLogin(2)} />
             <p>Demo Profile 2</p>
           </div>
         </div>
