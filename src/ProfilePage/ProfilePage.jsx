@@ -14,14 +14,16 @@ function ProfilePage() {
   const [goodFoods, setGoodFoods] = useState();
 
   useEffect(() => {
-    fetch(`https://27965142-cb65-4b7c-9f97-05e599e7c347.mock.pstmn.io/api/v1/users/${user_id}/foods`)
+    // fetch(`https://27965142-cb65-4b7c-9f97-05e599e7c347.mock.pstmn.io/api/v1/users/${user_id}/foods`)
+    fetch(`http://127.0.0.1:3000/api/v1/users/${user_id}/foods`)
     .then(response => response.json())
     .then(data => setFoods(data.data))
     .catch(err => console.log(err))
   }, []);
 
   useEffect(() => {
-    fetch(`https://27965142-cb65-4b7c-9f97-05e599e7c347.mock.pstmn.io/api/v1/users/${user_id}`)
+    // fetch(`https://27965142-cb65-4b7c-9f97-05e599e7c347.mock.pstmn.io/api/v1/users/${user_id}`)
+    fetch(`http://127.0.0.1:3000/api/v1/logged_in`)
     .then(response => response.json())
     .then(data => setUser(data.data))
     .catch(err => console.log(err))
