@@ -2,6 +2,11 @@ import "./NavBar.css"
 import { Link } from "react-router-dom"
 
 function NavBar({userId}) {
+
+  const handleLogout = () => {
+    fetch(`http://127.0.0.1:3000/api/v1/logout`, { method: 'DELETE' })
+  }
+
   return (
     <>
       {
@@ -9,7 +14,7 @@ function NavBar({userId}) {
         <div className="links-container">
           <Link className="profile-link" to="/profile" state={userId}>Profile</Link>
           <Link className="search-link" to="/search" state={userId}>Search</Link>
-          <Link className="logout-link" to="/">Log Out</Link>
+          <Link className="logout-link" to="/" onClick={() => {handleLogout()}}>Log Out</Link>
         </div>
         :
         <div className="links-container">
