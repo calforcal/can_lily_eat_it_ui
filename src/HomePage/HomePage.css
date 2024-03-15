@@ -1,12 +1,68 @@
+.main-heading {
+  display: block;
+}
+
 .home-page-container {
+  display: block;
+}
+
+.about-container {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  width: 500px;
+  height: 200px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 30px 0px 0px 0px;
+}
+
+.about-snippet {
+  font-size: 24px;
+}
+
+a.skip-login-button {
+  text-decoration: none;
+  color: black;
+  font-weight: 700;
+  font-family:Arial, Helvetica, sans-serif;
+  border: 2px solid black;
+  border-radius: 8px;
+  margin: 30px;
+  width: 250px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  vertical-align: middle;
+  background-color: aliceblue;
+}
+
+.buttons-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 50%;
-  margin: 50px auto;
-  background-color: rgb(245, 207, 156, .5);
+  margin: 0 auto;
+}
+
+.login-register-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 50%;
+  height: 500px;
+  background-color: rgb(245, 241, 236);
   border: 2px solid gray;
   border-radius: 25px;
+  box-shadow: 5px 5px rgba(177, 173, 168, 0.5);
+  margin: 10px 20px;
+}
+
+.account-text {
+  font-size: 24px;
 }
 
 .login-register-container button{
@@ -20,38 +76,47 @@
   background-color: aliceblue;
   justify-content: center;
   align-items: center;
-  margin: 30px;
 }
 
-.skip-login-button {
-  text-decoration: none;
-  font-family:Arial, Helvetica, sans-serif;
-  color: black;
-  border: 2px solid black;
-  border-radius: 8px;
-  margin: 30px;
-  width: 175px;
-  height: 50px;
-  line-height: 50px;
-  text-align: center;
-  vertical-align: middle;
-  background-color: aliceblue;
+.existing-user-container {
+  margin: 40px 0px;
+}
+
+.new-user-container {
+  margin: 40px 0px;
 }
 
 .demo-profile-container {
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+  height: 500px;
+  background-color: rgb(245, 241, 236);
+  border: 2px solid gray;
+  border-radius: 25px;
+  box-shadow: 5px 5px rgba(177, 173, 168, 0.5);
+  margin: 10px 20px;
 }
 
 .demo-profile-1, .demo-profile-2 {
   margin: 40px;
   text-align: center;
+  font-size: 20px;
+  text-decoration: underline;
+}
+
+.demo-profile-1:hover, .demo-profile-2:hover {
+  cursor: pointer;
+  color: rgb(247, 37, 133)
 }
 
 .demo-profile-1 p, .demo-profile-2 p {
   margin: 10px;
 }
 
-.mr-pic, .rr-pic {
+.mr-pic, .nk-pic {
   height: 130px;
   width: 130px;
   border-radius: 100px;

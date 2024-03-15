@@ -60,29 +60,40 @@ function HomePage() {
 
   return (
     <>
-      <MainHeading />
+      <MainHeading classname="main-heading" />
+      <div className="about-container">
+          <h3 className="about-snippet">Use the UPC Code Search to find out what potential allergens are in your foods! </h3>
+          <Link className="skip-login-button" to="/search">
+            Continue without Logging-In
+          </Link>
+      </div>
       <div className="home-page-container">
-        <div className="login-register-container">
-          <Link className="login-button" to="/login">
-            <button>Login</button>
-          </Link>
-          <Link className="create-account-button" to="/register">
-            <button>Create Account</button>
-          </Link>
-        </div>
-        <div className="demo-profile-container">
-          <div className="demo-profile-1">
-            <img className="mr-pic" src="./src/assets/images/mr-1.jpeg" alt="maggie-rogers" onClick={() => getDemoLogin(1)}/>
-            <p>Demo Profile 1</p>
+        <div className="buttons-container">
+          <div className="login-register-container">
+            <div className="existing-user-container">
+              <p className="account-text">Already have an Account?</p>
+              <Link className="login-button" to="/login">
+                <button>Login Here</button>
+              </Link>
+            </div>
+            <div className="new-user-container">
+              <p className="account-text">New User?</p>
+              <Link className="create-account-button" to="/register">
+                <button>Create Account</button>
+              </Link>
+            </div>
           </div>
-          <div className="demo-profile-2">
-            <img className="rr-pic" src="./src/assets/images/rr-1.jpeg" alt="renee-rogers" onClick={() => getDemoLogin(2)} />
-            <p>Demo Profile 2</p>
+          <div className="demo-profile-container">
+            <div className="demo-profile-1" onClick={() => getDemoLogin(1)}>
+              <img className="mr-pic" src="./src/assets/images/mr-1.jpeg" alt="maggie-rogers"/>
+              <p>Demo Profile 1</p>
+            </div>
+            <div className="demo-profile-2" onClick={() => getDemoLogin(2)}>
+              <img className="nk-pic" src="./src/assets/images/noah-kahan.jpeg" alt="noah-kahan"/>
+              <p>Demo Profile 2</p>
+            </div>
           </div>
         </div>
-        <Link className="skip-login-button" to="/search">
-          Skip These for now
-        </Link>
       </div>
     </>
   );
