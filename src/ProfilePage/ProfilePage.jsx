@@ -90,7 +90,7 @@ function ProfilePage() {
               badFoods.map((food) => (
                 <>
                   <FoodCard result={food} extraClass={"-profile"} userId={user_id} />
-                  <button>Unsave Food</button>
+                  <button onClick={() => {handleDelete(user_id, food.id)}}>Unsave Food</button>
                 </>
               ))
             :
@@ -102,7 +102,7 @@ function ProfilePage() {
           { goodFoods ?
               goodFoods.map((food) => (
                 <>
-                  <FoodCard result={food} extraClass={"-profile"} userId={user_id} />
+                  <FoodCard key={food.id} result={food} extraClass={"-profile"} userId={user_id} />
                   <button onClick={() => {handleDelete(user_id, food.id)}}>Unsave Food</button>
                 </>
               ))
