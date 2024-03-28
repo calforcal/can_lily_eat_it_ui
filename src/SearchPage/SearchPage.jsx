@@ -19,13 +19,17 @@ function SearchPage() {
   return (
     <>
       <MainHeading userId={userId}/>
-      <div className="app-search-container">
-        <UpcSearchBar setResult={setResult} />
-        { result ?
-            <FoodCard result={result.data} extraClass="-search" userId={userId} />
-          :
-            <></>
-        }
+      <div className="search-and-result-container">
+        <div className="search-container">
+          <UpcSearchBar setResult={setResult} />
+        </div>
+        <div className="food-card-container">
+          { result ?
+              <FoodCard result={result.data} extraClass="-search" userId={userId} />
+            :
+              <p className="pre-search-placeholder">Search for an Item!</p>
+          }
+        </div>
       </div>
     </>
   );
