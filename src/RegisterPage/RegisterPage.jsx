@@ -82,7 +82,7 @@ function RegisterPage() {
         <label><b>Password Confirmation</b></label>
         <input type="password" placeholder="Password Confirmation" value={passwordConfirmation} onChange={(e) => handleRegisterInfo("passwordConfirmation", e.target.value)} required />
 
-        <button onClick={postUserRegistration}>Register</button>
+        <button className="register-button" onClick={postUserRegistration}>Register</button>
       </div>
       <div className="container signin">
         <p>Already have an account? <a href="#">Sign in</a>.</p>
