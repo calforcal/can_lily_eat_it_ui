@@ -1,3 +1,8 @@
+.home-page {
+  background-image: url("/src/images/background_image.jpeg");
+  background-size: cover;
+}
+
 .main-heading {
   display: block;
 }
@@ -42,7 +47,7 @@ a.skip-login-button {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 50%;
+  width: 100%;
   margin: 0 auto;
 }
 
@@ -54,7 +59,7 @@ a.skip-login-button {
   text-align: center;
   width: 50%;
   height: 500px;
-  background-color: rgb(245, 241, 236);
+  background-color: rgb(248, 248, 248);
   border: 2px solid gray;
   border-radius: 25px;
   box-shadow: 5px 5px rgba(177, 173, 168, 0.5);
@@ -93,7 +98,7 @@ a.skip-login-button {
   justify-content: center;
   width: 50%;
   height: 500px;
-  background-color: rgb(245, 241, 236);
+  background-color: rgb(248, 248, 248);
   border: 2px solid gray;
   border-radius: 25px;
   box-shadow: 5px 5px rgba(177, 173, 168, 0.5);
@@ -120,4 +125,23 @@ a.skip-login-button {
   height: 130px;
   width: 130px;
   border-radius: 100px;
+}
+
+.demo-gif-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+  height: 500px;
+  background-color: rgb(248, 248, 248);
+  border: 2px solid gray;
+  border-radius: 25px;
+  box-shadow: 5px 5px rgba(177, 173, 168, 0.5);
+  margin: 10px 20px;
+}
+
+.demo-gif {
+  width: 400px;
+  height: 300px;
 }
