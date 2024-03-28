@@ -1,10 +1,12 @@
 import { React, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./FoodCard.css"
+import TabButton from "../TabButton/TabButton";
 
 function FoodCard({result, extraClass, userId}) {
 
   const [savedFood, setSavedFood] = useState(false);
+  const [selectedTopic, setSelectedTopic] = useState();
   const navigate = useNavigate();
 
   const allergen = {
@@ -21,6 +23,41 @@ function FoodCard({result, extraClass, userId}) {
     ingredients: result.attributes.ingredients,
     allergens: result.attributes.allergens,
     lily_eat: result.attributes.lily_eat
+  }
+
+  const tabs = ["Ingredients", "Allergens Found"]
+
+  let tabContent = <p>Click To Learn More.</p>
+
+  if (selectedTopic == "ingredients") {
+    tabContent = (
+      <div className="tab-content">
+        <p>{allergen.ingredients}</p>
+      </div>
+    );
+  } 
+  else if (selectedTopic == "allergens") {
+    tabContent = (
+      <div className="tab-content">
+        <p>{allergen.allergens}</p>
+      </div>
+    );
+  } 
+  else {
+    tabContent = (
+      <div className="tab-content">
+        <p>{undefined}</p>
+      </div>
+    );
+  }
+
+  function handleSelect(selectedButton) {
+    if (selectedTopic == selectedButton) {
+      setSelectedTopic();
+    }
+    else {
+      setSelectedTopic(selectedButton);
+    }
   }
 
   const postSavedFood = () => {
@@ -58,19 +95,19 @@ function FoodCard({result, extraClass, userId}) {
       <div className={"food-result-container" + extraClass}>
         <ul>
           <li className={"food-item" + extraClass}>{allergen.name}</li>
-          <li className={"ingredients-label" + extraClass}>Ingredients</li>
-          <li className={"food-ingredients" + extraClass}>{allergen.ingredients}</li>
-          <br></br>
-          <li className={"allergens-label" + extraClass}>Allergens Found</li>
-          <li className={"food-allergens-found" + extraClass}>{allergen.allergens}</li>
-          <br></br>
           <li className={"can-lily-eat-it-label" + extraClass}>Can Lily Eat It?</li>
-          <li className={"food-lily-eat" + extraClass}>{allergen.lilyEat ? "Yes, she can!" : "ABSOLUTELY NOT" }</li>
+          <li className={allergen.lilyEat ? "food-lily-eat-true" + extraClass : "food-lily-eat-false" + extraClass}>{allergen.lilyEat ? "Yes, she can!" : "ABSOLUTELY NOT" }</li>
         </ul>
+        
+        <div className="tab-buttons">
+          <TabButton className="tab-button" buttonName="Ingredients" isSelected={selectedTopic === "ingredients"} onSelect={() => handleSelect("ingredients")} />
+          <TabButton className="tab-button" buttonName="Allergens" isSelected={selectedTopic === "allergens"} onSelect={() => handleSelect("allergens")} />
+        </div>
+        <p className="tab-content">{tabContent}</p>
         {
           userId && extraClass != "-profile"
           ?
-          <button onClick={() => {handleSave()}}>Save Food</button>
+          <button className="save-food-button" onClick={() => {handleSave()}}>Save Food</button>
           :
           null
         }
