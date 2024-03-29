@@ -71,7 +71,7 @@ a.skip-login-button {
   font-size: 24px;
 }
 
-.login-register-container button{
+.login-register-container button {
   display: inline-flex;
   border: 2px solid black;
   border-radius: 8px;
