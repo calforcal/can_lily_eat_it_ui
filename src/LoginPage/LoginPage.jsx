@@ -59,20 +59,15 @@ function LoginPage() {
   return (
     <>
       <MainHeading />
-      <div className="register-page-container">
-        <h1>Register</h1>
-        <p>Please fill in this form to create an account.</p>
+      <div className="login-page">
+        <div className="login-page-form-container">
+          <h1 className="login-title">Log In</h1>
 
-        <label><b>Email</b></label>
-        <input type="text" placeholder="Enter Email" value={email} onChange={(e) => handleRegisterInfo("email", e.target.value)} required />
+          <input type="text" placeholder="Email" value={email} onChange={(e) => handleRegisterInfo("email", e.target.value)} required />
+          <input type="password" placeholder="Password" value={password} onChange={(e) => handleRegisterInfo("password", e.target.value)} required />
 
-        <label><b>Password</b></label>
-        <input type="password" placeholder="Enter Password" value={password} onChange={(e) => handleRegisterInfo("password", e.target.value)} required />
-
-        <button onClick={postUserRegistration}>Register</button>
-      </div>
-      <div className="container signin">
-        <p>Already have an account? <a href="/login">Sign in</a>.</p>
+          <button className="login-button" onClick={postUserRegistration}>Log in</button>
+        </div>
       </div>
     </>
   );
