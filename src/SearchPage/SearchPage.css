@@ -1,9 +1,16 @@
+.search-page {
+  background-image: url("/src/assets/images/background_image-2.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100%;
+  min-height: 100vh;
+}
+
 .search-and-result-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 100%;
 }
 
 .search-container {

@@ -81,34 +81,36 @@ function ProfilePage() {
   return (
     <>
       <MainHeading userId={user_id}/>
+      <div className="profile-page">
       <div className="search-link-container">
       </div>
-      <div className="foods-container">
-        <div className="bad-foods-container">
-          <h1 className="bad-foods-title">BAD FOODS</h1>
-          { badFoods ?
-              badFoods.map((food) => (
-                <>
-                  <FoodCard result={food} extraClass={"-profile"} userId={user_id} />
-                  <button onClick={() => {handleDelete(user_id, food.id)}}>Unsave Food</button>
-                </>
-              ))
-            :
-              <h1>Nothing to see</h1>
-          }
-        </div>
-        <div className="good-foods-container">
-          <h1 className="good-foods-title">GOOD FOODS</h1>
-          { goodFoods ?
-              goodFoods.map((food) => (
-                <>
-                  <FoodCard key={food.id} result={food} extraClass={"-profile"} userId={user_id} />
-                  <button onClick={() => {handleDelete(user_id, food.id)}}>Unsave Food</button>
-                </>
-              ))
-            :
-              <h1>Nothing to see</h1>
-          }
+        <div className="foods-container">
+          <div className="bad-foods-container">
+            <h1 className="bad-foods-title">BAD FOODS</h1>
+            { badFoods ?
+                badFoods.map((food) => (
+                  <>
+                    <FoodCard result={food} extraClass={"-profile"} userId={user_id} />
+                    <button onClick={() => {handleDelete(user_id, food.id)}}>Unsave Food</button>
+                  </>
+                ))
+              :
+                <h1>Nothing to see</h1>
+            }
+          </div>
+          <div className="good-foods-container">
+            <h1 className="good-foods-title">GOOD FOODS</h1>
+            { goodFoods ?
+                goodFoods.map((food) => (
+                  <>
+                    <FoodCard key={food.id} result={food} extraClass={"-profile"} userId={user_id} />
+                    <button onClick={() => {handleDelete(user_id, food.id)}}>Unsave Food</button>
+                  </>
+                ))
+              :
+                <h1>Nothing to see</h1>
+            }
+          </div>
         </div>
       </div>
     </>

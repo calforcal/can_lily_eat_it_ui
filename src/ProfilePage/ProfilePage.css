@@ -1,3 +1,11 @@
+.profile-page {
+  background-image: url("/src/assets/images/background_image-2.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100%;
+  min-height: 100vh;
+}
+
 .foods-container {
   display: flex;
   justify-content: center;

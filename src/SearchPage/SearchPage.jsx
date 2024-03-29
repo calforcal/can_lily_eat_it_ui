@@ -31,12 +31,14 @@ function SearchPage() {
   return (
     <>
       <MainHeading userId={userId}/>
-      <div className="search-and-result-container">
-        <div className="search-container">
-          <UpcSearchBar setResult={setResult} />
-        </div>
-        <div className="food-card-container">
-          {renderMe}
+      <div className="search-page">
+        <div className="search-and-result-container">
+          <div className="search-container">
+            <UpcSearchBar setResult={setResult} />
+          </div>
+          <div className="food-card-container">
+            {renderMe}
+          </div>
         </div>
       </div>
     </>
