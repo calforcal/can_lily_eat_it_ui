@@ -25,8 +25,6 @@ function FoodCard({result, extraClass, userId}) {
     lily_eat: result.attributes.lily_eat
   }
 
-  const tabs = ["Ingredients", "Allergens Found"]
-
   let tabContent = <p>Click To Learn More.</p>
 
   if (selectedTopic == "ingredients") {

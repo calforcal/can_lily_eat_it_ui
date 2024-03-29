@@ -1,6 +1,7 @@
 .home-page {
-  background-image: url("/src/images/background_image.jpeg");
+  background-image: url("/src/assets/images/background_image-2.jpg");
   background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .main-heading {
