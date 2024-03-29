@@ -16,6 +16,18 @@ function SearchPage() {
 
   const [result, setResult] = useState();
 
+  let renderMe;
+
+  if (result && result.data) {
+    renderMe = <FoodCard result={result.data} extraClass="-search" userId={userId} />
+  } 
+  else if (result) {
+    renderMe = <p className="not-found-search">No Item was found with that Code. Please try again.</p>
+  }
+  else {
+    renderMe = <p className="pre-search-placeholder">Search for an Item!</p>
+  };
+
   return (
     <>
       <MainHeading userId={userId}/>
@@ -24,11 +36,7 @@ function SearchPage() {
           <UpcSearchBar setResult={setResult} />
         </div>
         <div className="food-card-container">
-          { result ?
-              <FoodCard result={result.data} extraClass="-search" userId={userId} />
-            :
-              <p className="pre-search-placeholder">Search for an Item!</p>
-          }
+          {renderMe}
         </div>
       </div>
     </>
