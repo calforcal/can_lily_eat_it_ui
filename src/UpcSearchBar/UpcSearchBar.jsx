@@ -7,7 +7,14 @@ function UpcSearchBar({ setResult }) {
   const fetchData = (value) => {
     // fetch(`https://27965142-cb65-4b7c-9f97-05e599e7c347.mock.pstmn.io/api/v1/allergens?upc=${value}`)
     fetch(`http://127.0.0.1:3000/api/v1/allergens?upc=${value}`)
-    .then((response) => response.json())
+    .then((response) => {
+      if (response.status == 204) {
+        return "No Data."
+      }
+      else {
+        return response.json()
+      }
+    })
     .then((data) => setResult(data))
     .catch((err) => console.log(err))
   };
