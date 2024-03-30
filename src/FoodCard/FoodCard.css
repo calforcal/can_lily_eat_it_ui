@@ -50,12 +50,13 @@ li {
 }
 
 .food-result-container-profile {
-  display: inline-flex;
+  display: flex;
   flex-direction: column;
-  margin: 20px;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 20px 0px 20px;
   padding: 10px;
   width: 400px;
-  height: 400px;
   background-color: rgb(248, 248, 248);
   border: 2px solid gray;
   border-radius: 25px;
@@ -84,12 +85,18 @@ li {
 
 .save-food-button {
   cursor: pointer;
+  border: 2px solid rgba(177, 173, 168, 0.5);
+  border-radius: 8px;
+  margin: 10px;
+  height: 30px;
+  width: 125px;
+  background-color: aliceblue;
 }
 
 .inactive {
   border: 2px solid rgb(0, 0, 0, .3);
   border-radius: 8px;
-  margin-left: 10px;
+  margin: 10px;
   height: 50px;
   width: 150px;
   margin: 20px;
@@ -99,7 +106,7 @@ li {
 .active {
   border: 2px solid rgb(0, 0, 0, .3);
   border-radius: 8px;
-  margin-left: 10px;
+  margin: 10px;
   height: 50px;
   width: 150px;
   margin: 20px;
@@ -109,5 +116,5 @@ li {
 .tab-content {
   font-size: 20px;
   text-align: center;
-  width: 500px;
+  width: 400px;
 }
