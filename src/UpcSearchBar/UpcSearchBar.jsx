@@ -1,12 +1,13 @@
 import "./UpcSearchBar.css"
 import { useState } from "react";
 
-function UpcSearchBar({ setResult }) {
+function UpcSearchBar({ userAllergens, setResult }) {
   const [input, setInput] = useState("");
 
   const fetchData = (value) => {
+    let stringAllergens = userAllergens.join(",")
     // fetch(`https://27965142-cb65-4b7c-9f97-05e599e7c347.mock.pstmn.io/api/v1/allergens?upc=${value}`)
-    fetch(`http://127.0.0.1:3000/api/v1/allergens?upc=${value}`)
+    fetch(`http://127.0.0.1:3000/api/v1/upc_items?upc=${value}&allergens=${stringAllergens}`)
     .then((response) => {
       if (response.status == 204) {
         return "No Data."

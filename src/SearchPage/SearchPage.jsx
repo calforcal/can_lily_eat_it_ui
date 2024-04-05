@@ -2,6 +2,7 @@ import "./SearchPage.css"
 import { useEffect, useState } from "react";
 import MainHeading from "../MainHeading/MainHeading";
 import FoodCard from "../FoodCard/FoodCard";
+import CheckBoxForm from "../CheckBoxForm/CheckBoxForm"
 import UpcSearchBar from "../UpcSearchBar/UpcSearchBar";
 import { useLocation } from "react-router-dom";
 
@@ -9,6 +10,7 @@ function SearchPage() {
 
   const location = useLocation();
   const [userId, setUserId] = useState(null);
+  const [userAllergens, setUserAllergens] = useState([]);
 
   useEffect(() => {
     setUserId(location.state)
@@ -34,7 +36,8 @@ function SearchPage() {
       <div className="search-page">
         <div className="search-and-result-container">
           <div className="search-container">
-            <UpcSearchBar setResult={setResult} />
+            <UpcSearchBar userAllergens={userAllergens} setResult={setResult} />
+            <CheckBoxForm setUserAllergens={setUserAllergens}/>
           </div>
           <div className="food-card-container">
             {renderMe}
