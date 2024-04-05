@@ -5,6 +5,7 @@ import SearchPage from './SearchPage/SearchPage'
 import RegisterPage from './RegisterPage/RegisterPage'
 import ProfilePage from './ProfilePage/ProfilePage'
 import LoginPage from './LoginPage/LoginPage'
+import AboutPage from './AboutPage/AboutPage'
 import './App.css'
 import MainHeading from '/src/MainHeading/MainHeading'
 import UpcSearchBar from '/src/UpcSearchBar/UpcSearchBar'
@@ -20,6 +21,7 @@ function App() {
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/about" element={<AboutPage />} />
       </Routes>
     </>
   );
