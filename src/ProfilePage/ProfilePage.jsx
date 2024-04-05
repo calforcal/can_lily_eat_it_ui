@@ -12,11 +12,7 @@ function ProfilePage() {
   const [foods, setFoods] = useState();
   const [badFoods, setBadFoods] = useState();
   const [goodFoods, setGoodFoods] = useState();
-  const [deletedItem, setDeletedItem] = useState(0);
 
-  const pleaseRender = () => {
-    setDeletedItem(deletedItem + 1);
-  }
 
   useEffect(() => {
     // fetch(`https://27965142-cb65-4b7c-9f97-05e599e7c347.mock.pstmn.io/api/v1/users/${user_id}/foods`)
