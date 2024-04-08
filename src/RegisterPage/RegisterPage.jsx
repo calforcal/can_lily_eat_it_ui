@@ -1,86 +1,48 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import MainHeading from "../MainHeading/MainHeading";
-import "./RegisterPage.css"
+import RegisterForm from "../RegisterForm/RegisterForm"
+import CheckBoxForm from "../CheckBoxForm/CheckBoxForm";
 
 function RegisterPage() {
 
   const navigate = useNavigate();
-  
-  const [email, setEmail] = useState()
-  const [name, setName] = useState()
-  const [password, setPassword] = useState()
-  const [passwordConfirmation, setPasswordConfirmation] = useState()
-  const [userData, setUserData] = useState()
 
-  const handleRegisterInfo = (type, value) => {
-    if (type == "email") {
-      setEmail(value)
-    }
-    else if (type == "name") {
-      setName(value)
-    }
-    else if (type == "password") {
-      setPassword(value)
-    }
-    else if (type == "passwordConfirmation") {
-      setPasswordConfirmation(value)
-    }
-  };
+  const [formFilled, setFormFilled] = useState(false);
+  const [userAllergens, setUserAllergens] = useState([]);
+  const [userData, setUserData] = useState();
 
-  const makeApiCall = async (email, name, password, passwordConfirmation) => {
-    fetch('http://127.0.0.1:3000/api/v1/users', {
+  const saveUserSelections = () => {
+    fetch(`http://127.0.0.1:3000/api/v1/users/${userData.id}/allergens`, {
       method: 'POST',
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({email: email, name: name, password: password, password_confirmation: passwordConfirmation})
+      body: JSON.stringify({allergens: userAllergens.join()})
     })
     .then((response) => {
-      if (!response.ok) {
-        alert("Please check the information you entered and try again.")
+      if (response.status == 201) {
+        navigate("/profile", { state: userData.id })
       }
-      else {
-        return response.json()
-      }
-    })
-    .then((data) => {
-      setUserData(data.data)
     })
     .catch((err) => console.log(err))
-  };
-
-  useEffect(() => {
-    // Check if userData is not null before navigating
-    if (userData) {
-      navigate("/profile", { state: userData.id });
-    }
-  }, [userData, navigate]);
-
-  // Needs FIX: Button must be pressed twice for page redirect.
-  const postUserRegistration = async () => {
-    await makeApiCall(email, name, password, passwordConfirmation);
-  };
+  }
 
   return (
     <>
       <MainHeading />
       <div className="register-page">
-        <div className="register-page-container">
-          <h1 className="register-title">Register</h1>
-          <p className="register-info">Please fill in this form to create an account.</p>
-
-          <input type="text" placeholder="Email" value={email} onChange={(e) => handleRegisterInfo("email", e.target.value)} required />
-          <input type="text" placeholder="Name" value={name} onChange={(e) => handleRegisterInfo("name", e.target.value)} required />
-          <input type="password" placeholder="Password" value={password} onChange={(e) => handleRegisterInfo("password", e.target.value)} required />
-          <input type="password" placeholder="Password Confirmation" value={passwordConfirmation} onChange={(e) => handleRegisterInfo("passwordConfirmation", e.target.value)} required />
-
-          <button className="register-button" onClick={postUserRegistration}>Register</button>
-        </div>
-        <div className="container-login-link">
-        <a href="/login"><p>Already have an account?Sign in</p></a>
-        </div>
+        {
+          formFilled
+          ?
+          <>
+            <CheckBoxForm setUserAllergens={setUserAllergens}/>
+            <button className="checkbox-save-button" onClick={saveUserSelections}>Save Selections and Register</button>
+          </>
+          :
+          <RegisterForm setFormFilled={setFormFilled} setUserData={setUserData}/>
+        }
       </div>
     </>
   );
