@@ -3,6 +3,7 @@ import "./ProfilePage.css"
 import { useLocation, Link } from "react-router-dom";
 import FoodCard from "../FoodCard/FoodCard";
 import MainHeading from "../MainHeading/MainHeading";
+import CheckBoxForm from "../CheckBoxForm/CheckBoxForm";
 
 function ProfilePage() {
 
@@ -12,13 +13,21 @@ function ProfilePage() {
   const [foods, setFoods] = useState();
   const [badFoods, setBadFoods] = useState();
   const [goodFoods, setGoodFoods] = useState();
-
+  const [existingAllergens, setExistingAllergens] = useState([]);
+  const [userAllergens, setUserAllergens] = useState([]);
 
   useEffect(() => {
     // fetch(`https://27965142-cb65-4b7c-9f97-05e599e7c347.mock.pstmn.io/api/v1/users/${user_id}/foods`)
     fetch(`http://127.0.0.1:3000/api/v1/users/${user_id}/foods`)
     .then(response => response.json())
     .then(data => setFoods(data.data))
+    .catch(err => console.log(err))
+  }, []);
+
+  useEffect(() => {
+    fetch(`http://127.0.0.1:3000/api/v1/users/${user_id}/allergens`)
+    .then(response => response.json())
+    .then(data => setExistingAllergens(data.data))
     .catch(err => console.log(err))
   }, []);
 
@@ -78,8 +87,6 @@ function ProfilePage() {
     <>
       <MainHeading userId={user_id}/>
       <div className="profile-page">
-      <div className="search-link-container">
-      </div>
         <div className="foods-container">
           <div className="bad-foods-container">
             <h1 className="bad-foods-title">BAD FOODS</h1>
