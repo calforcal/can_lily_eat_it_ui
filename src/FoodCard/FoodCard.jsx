@@ -43,9 +43,7 @@ function FoodCard({result, extraClass, userId}) {
   } 
   else {
     tabContent = (
-      <div className="tab-content">
-        <p>{undefined}</p>
-      </div>
+      <p>{undefined}</p>
     );
   }
 
@@ -101,7 +99,7 @@ function FoodCard({result, extraClass, userId}) {
           <TabButton className="tab-button" buttonName="Ingredients" isSelected={selectedTopic === "ingredients"} onSelect={() => handleSelect("ingredients")} />
           <TabButton className="tab-button" buttonName="Allergens" isSelected={selectedTopic === "allergens"} onSelect={() => handleSelect("allergens")} />
         </div>
-        <p className="tab-content">{tabContent}</p>
+        <div className="tab-content">{tabContent}</div>
         {
           userId && extraClass != "-profile"
           ?
