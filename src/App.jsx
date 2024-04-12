@@ -7,9 +7,6 @@ import ProfilePage from './ProfilePage/ProfilePage'
 import LoginPage from './LoginPage/LoginPage'
 import AboutPage from './AboutPage/AboutPage'
 import './App.css'
-import MainHeading from '/src/MainHeading/MainHeading'
-import UpcSearchBar from '/src/UpcSearchBar/UpcSearchBar'
-import FoodCard from './FoodCard/FoodCard'
 
 function App() {
 
