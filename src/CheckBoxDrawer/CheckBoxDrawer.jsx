@@ -38,7 +38,7 @@ function CheckBoxDrawer({ userId }) {
   const DrawerList = (
     <List sx={{ display:'flex', flexDirection: 'column' }}>
       <Button sx={{ marginTop: -1.5, paddingBottom: -1.5, color: 'white', backgroundColor: '#1d95fe', fontSize: 24 }} size='large' onClick={toggleDrawer(false)}>Close</Button>
-      <CheckBoxForm setUserAllergens={setUserAllergens}/>
+      <CheckBoxForm setUserAllergens={setUserAllergens} extraClass="-profile"/>
       <Button sx={{ color: 'white', margin: 1, borderRadius: 20, backgroundColor: '#1d95fe', fontSize: 18 }} onClick={saveUserSelections}>Save Selections</Button>
     </List>
   );

@@ -1,7 +1,7 @@
 import "./CheckBoxForm.css"
 import { useState } from "react";
 
-function CheckBoxForm({ setUserAllergens }) {
+function CheckBoxForm({ setUserAllergens, extraClass}) {
 
   const [allergenHash, setAllergenHash] = useState({
     "dairy": false,
@@ -33,7 +33,7 @@ function CheckBoxForm({ setUserAllergens }) {
   }
 
   return (
-    <form className="checkbox-form">
+    <form className={"checkbox-form" + extraClass}>
       <div>
         <label>Dairy</label>
         <input type="checkbox" className="allergen-checkbox" value="dairy" onChange={(e) => handleOnChange(e.target.value)} />

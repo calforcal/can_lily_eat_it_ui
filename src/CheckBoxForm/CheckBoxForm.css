@@ -1,4 +1,11 @@
-.checkbox-form {
+.checkbox-form-profile {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.checkbox-form-register {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
