@@ -34,3 +34,9 @@
   background-color: aliceblue;
   cursor: pointer;
 }
+
+.tab-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
