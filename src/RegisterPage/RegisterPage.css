@@ -6,3 +6,25 @@
   min-height: 100vh;
   padding: 100px;
 }
+
+.register-allergens {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.heading {  
+  font-size: 30px;
+  padding-bottom: 10px;
+}
+
+.checkbox-save-button {
+  border: 2px;
+  color: white;
+  border-radius: 8px;
+  margin-top: 20px;
+  height: 30px;
+  width: 250px;
+  background-color: rgb(29, 149, 254);
+}

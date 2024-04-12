@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import "./RegisterPage.css"
 import MainHeading from "../MainHeading/MainHeading";
 import RegisterForm from "../RegisterForm/RegisterForm"
 import CheckBoxForm from "../CheckBoxForm/CheckBoxForm";
@@ -36,10 +37,11 @@ function RegisterPage() {
         {
           formFilled
           ?
-          <>
-            <CheckBoxForm setUserAllergens={setUserAllergens}/>
+          <div className="register-allergens">
+            <p className="heading">Select you Allergens</p>
+            <CheckBoxForm setUserAllergens={setUserAllergens} extraClass="-register"/>
             <button className="checkbox-save-button" onClick={saveUserSelections}>Save Selections and Register</button>
-          </>
+          </div>
           :
           <RegisterForm setFormFilled={setFormFilled} setUserData={setUserData}/>
         }
