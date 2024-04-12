@@ -36,8 +36,13 @@ function SearchPage() {
       <div className="search-page">
         <div className="search-and-result-container">
           <div className="search-container">
-            <UpcSearchBar userAllergens={userAllergens} setResult={setResult} />
-            <CheckBoxForm setUserAllergens={setUserAllergens}/>
+            <UpcSearchBar userAllergens={userAllergens} setResult={setResult} userId={userId} />
+            {
+              userId ?
+              <></>
+              :
+              <CheckBoxForm setUserAllergens={setUserAllergens}/>
+            }
           </div>
           <div className="food-card-container">
             {renderMe}
