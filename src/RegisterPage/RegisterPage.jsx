@@ -14,7 +14,7 @@ function RegisterPage() {
   const [userData, setUserData] = useState();
 
   const saveUserSelections = () => {
-    fetch(`http://127.0.0.1:3000/api/v1/users/${userData.id}/allergens`, {
+    fetch(`https://can-lily-eat-it.onrender.com/api/v1/users/${userData.id}/allergens`, {
       method: 'POST',
       headers: {
         Accept: 'application/json',

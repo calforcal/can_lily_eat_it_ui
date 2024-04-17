@@ -23,7 +23,7 @@ function LoginPage() {
 
   const makeApiCall = async (email, password) => {
     // fetch('https://27965142-cb65-4b7c-9f97-05e599e7c347.mock.pstmn.io/api/v1/users', {
-    fetch('http://127.0.0.1:3000/api/v1/sessions', {
+    fetch('https://can-lily-eat-it.onrender.com/api/v1/sessions', {
       method: 'POST',
       headers: {
         Accept: 'application/json',

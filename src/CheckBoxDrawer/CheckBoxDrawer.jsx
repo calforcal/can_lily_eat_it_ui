@@ -11,7 +11,7 @@ function CheckBoxDrawer({ userId }) {
   const [userAllergens, setUserAllergens] = useState([]);
 
   const saveUserSelections = () => {
-    fetch(`http://127.0.0.1:3000/api/v1/users/${userId}/allergens`, {
+    fetch(`https://can-lily-eat-it.onrender.com/api/v1/users/${userId}/allergens`, {
       method: 'PATCH',
       headers: {
         Accept: 'application/json',

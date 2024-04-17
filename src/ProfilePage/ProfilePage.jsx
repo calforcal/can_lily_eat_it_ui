@@ -19,14 +19,14 @@ function ProfilePage() {
 
   useEffect(() => {
     // fetch(`https://27965142-cb65-4b7c-9f97-05e599e7c347.mock.pstmn.io/api/v1/users/${user_id}/foods`)
-    fetch(`http://127.0.0.1:3000/api/v1/users/${user_id}/foods`)
+    fetch(`https://can-lily-eat-it.onrender.com/api/v1/users/${user_id}/foods`)
     .then(response => response.json())
     .then(data => setFoods(data.data))
     .catch(err => console.log(err))
   }, []);
 
   useEffect(() => {
-    fetch(`http://127.0.0.1:3000/api/v1/users/${user_id}/allergens`)
+    fetch(`https://can-lily-eat-it.onrender.com/api/v1/users/${user_id}/allergens`)
     .then(response => response.json())
     .then(data => setExistingAllergens(data.data))
     .catch(err => console.log(err))
@@ -53,7 +53,7 @@ function ProfilePage() {
 
   const deleteSavedFood = (user_id, food_id) => {
     // fetch(`https://27965142-cb65-4b7c-9f97-05e599e7c347.mock.pstmn.io/api/v1/users/${userId}/foods/${allergen.foodId}`, {
-    fetch(`http://127.0.0.1:3000/api/v1/users/${user_id}/foods/${food_id}`, {
+    fetch(`https://can-lily-eat-it.onrender.com/api/v1/users/${user_id}/foods/${food_id}`, {
       method: 'DELETE',
       headers: {
         Accept: 'application/json',

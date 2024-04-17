@@ -28,7 +28,7 @@ function RegisterForm({ setFormFilled, setUserData }) {
   };
 
   const makeApiCall = async (email, name, password, passwordConfirmation) => {
-    fetch('http://127.0.0.1:3000/api/v1/users', {
+    fetch('https://can-lily-eat-it.onrender.com/api/v1/users', {
       method: 'POST',
       headers: {
         Accept: 'application/json',

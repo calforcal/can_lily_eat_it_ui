@@ -58,7 +58,7 @@ function FoodCard({result, extraClass, userId}) {
 
   const postSavedFood = () => {
     // fetch(`https://27965142-cb65-4b7c-9f97-05e599e7c347.mock.pstmn.io/api/v1/users/${userId}/foods`, {
-    fetch(`http://127.0.0.1:3000/api/v1/users/${userId}/foods`, {
+    fetch(`https://can-lily-eat-it.onrender.com/api/v1/users/${userId}/foods`, {
       method: 'POST',
       headers: {
         Accept: 'application/json',

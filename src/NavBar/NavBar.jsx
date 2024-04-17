@@ -5,7 +5,7 @@ import { Link } from "react-router-dom"
 function NavBar({userId}) {
 
   const handleLogout = () => {
-    fetch(`http://127.0.0.1:3000/api/v1/logout`, { method: 'DELETE' })
+    fetch(`https://can-lily-eat-it.onrender.com/api/v1/logout`, { method: 'DELETE' })
   }
 
   return (
