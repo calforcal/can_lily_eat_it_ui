@@ -86,17 +86,17 @@ function HomePage() {
             </div>
             <div className="demo-profile-container">
               <div className="demo-profile-1" onClick={() => getDemoLogin(1)}>
-                <img className="mr-pic" src="/src/assets/images/mr-1.jpeg" alt="maggie-rogers"/>
+                <img className="mr-pic" src="../../images/mr-1.jpeg" alt="maggie-rogers"/>
                 <p>Demo Profile 1</p>
               </div>
               <div className="demo-profile-2" onClick={() => getDemoLogin(2)}>
-                <img className="nk-pic" src="/src/assets/images/noah-kahan.jpeg" alt="noah-kahan"/>
+                <img className="nk-pic" src="../../images/noah-kahan.jpeg" alt="noah-kahan"/>
                 <p>Demo Profile 2</p>
               </div>
             </div>
             <div className="demo-gif-container">
               <p>App Tutorial / Demo</p>
-              <img className="demo-gif" src="/src/assets/images/app-screenshot.jpeg"/>
+              <img className="demo-gif" src="../../images/app-screenshot.jpeg"/>
             </div>
           </div>
         </div>
