@@ -1,5 +1,5 @@
 .register-form {
-  background-image: url("/src/assets/images/background_image-2.jpg");
+  background-image: url("../../images/background_image-2.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   height: 100%;
