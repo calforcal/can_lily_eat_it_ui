@@ -5,16 +5,16 @@ import { useLocation } from "react-router-dom";
 
 function AboutPage() {
 
-  const [userId, setUserId] = useState(null);
+  const [userToken, setUserToken] = useState(null);
   const location = useLocation();
 
   useEffect(() => {
-    setUserId(location.state)
+    setUserToken(location.state)
   }, [])
 
   return(
     <>
-      <MainHeading userId={userId}/>
+      <MainHeading userToken={userToken}/>
       <div className='about-page'>
         <h1 className='about-title'>About Can Lily Eat It?</h1>
         <p className='about-info'>

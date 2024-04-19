@@ -2,22 +2,25 @@ import CheckBoxDrawer from "../CheckBoxDrawer/CheckBoxDrawer";
 import "./NavBar.css"
 import { Link } from "react-router-dom"
 
-function NavBar({userId}) {
+function NavBar({userToken}) {
 
-  const handleLogout = () => {
-    fetch(`https://can-lily-eat-it.onrender.com/api/v1/logout`, { method: 'DELETE' })
-  }
+  const logOutUser = () => {
+		this.props.logOutUser();
+		localStorage.removeItem("token");
+		localStorage.removeItem("user");
+		window.history.back();
+	};
 
   return (
     <>
       {
-        userId ?
+        userToken ?
         <div className="links-container">
-          <Link className="profile-link" to="/profile" state={userId}>Profile</Link>
-          <Link className="about-link" to="/about" state={userId}>About</Link>
-          <Link className="search-link" to="/search" state={userId}>Search</Link>
-          <Link className="logout-link" to="/" onClick={() => {handleLogout()}}>Log Out</Link>
-          <CheckBoxDrawer className="gear-icon" userId={userId} />
+          <Link className="profile-link" to="/profile" state={userToken}>Profile</Link>
+          <Link className="about-link" to="/about" state={userToken}>About</Link>
+          <Link className="search-link" to="/search" state={userToken}>Search</Link>
+          <Link className="logout-link" to="/" onClick={() => {logOutUser()}}>Log Out</Link>
+          <CheckBoxDrawer className="gear-icon" userToken={userToken} />
         </div>
         :
         <div className="links-container">

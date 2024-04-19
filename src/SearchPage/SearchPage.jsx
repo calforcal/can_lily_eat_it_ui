@@ -9,11 +9,11 @@ import { useLocation } from "react-router-dom";
 function SearchPage() {
 
   const location = useLocation();
-  const [userId, setUserId] = useState(null);
+  const [userToken, setUserToken] = useState(null);
   const [userAllergens, setUserAllergens] = useState([]);
 
   useEffect(() => {
-    setUserId(location.state)
+    setUserToken(location.state)
   }, [])
 
   const [result, setResult] = useState();
@@ -21,7 +21,7 @@ function SearchPage() {
   let renderMe;
 
   if (result && result.data) {
-    renderMe = <FoodCard result={result.data} extraClass="-search" userId={userId} />
+    renderMe = <FoodCard result={result.data} extraClass="-search" userToken={userToken} />
   } 
   else if (result) {
     renderMe = <p className="not-found-search">No Item was found with that Code. Please try again.</p>
@@ -32,13 +32,13 @@ function SearchPage() {
 
   return (
     <>
-      <MainHeading userId={userId}/>
+      <MainHeading userToken={userToken}/>
       <div className="search-page">
         <div className="search-and-result-container">
           <div className="search-container">
-            <UpcSearchBar userAllergens={userAllergens} setResult={setResult} userId={userId} />
+            <UpcSearchBar userAllergens={userAllergens} setResult={setResult} userToken={userToken} />
             {
-              userId ?
+              userToken ?
               <></>
               :
               <CheckBoxForm setUserAllergens={setUserAllergens}/>

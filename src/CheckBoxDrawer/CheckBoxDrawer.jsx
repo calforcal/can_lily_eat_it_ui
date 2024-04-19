@@ -6,22 +6,23 @@ import Button from '@mui/material/Button';
 import CheckBoxForm from '../CheckBoxForm/CheckBoxForm';
 import SettingsIcon from '@mui/icons-material/Settings';
 
-function CheckBoxDrawer({ userId }) {
+function CheckBoxDrawer({ userToken }) {
   const [open, setOpen] = useState(false);
   const [userAllergens, setUserAllergens] = useState([]);
 
   const saveUserSelections = () => {
-    fetch(`https://can-lily-eat-it.onrender.com/api/v1/users/${userId}/allergens`, {
+    fetch(`https://can-lily-eat-it.onrender.com/api/v1/allergens`, {
       method: 'PATCH',
       headers: {
         Accept: 'application/json',
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        Authorization: `${userToken}`
       },
       body: JSON.stringify({allergens: userAllergens.join()})
     })
     .then((response) => {
       if (response.status == 201) {
-        navigate("/profile", { state: userData.id })
+        navigate("/profile", { state: userToken })
       }
       else if (response.status == 200) {
         setOpen(false);

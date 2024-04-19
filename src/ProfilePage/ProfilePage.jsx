@@ -10,7 +10,7 @@ import { render } from "react-dom";
 function ProfilePage() {
 
   const location = useLocation();
-  const user_id = location.state;
+  const token = location.state;
   const [foods, setFoods] = useState();
   const [badFoods, setBadFoods] = useState();
   const [goodFoods, setGoodFoods] = useState();
@@ -19,14 +19,26 @@ function ProfilePage() {
 
   useEffect(() => {
     // fetch(`https://27965142-cb65-4b7c-9f97-05e599e7c347.mock.pstmn.io/api/v1/users/${user_id}/foods`)
-    fetch(`https://can-lily-eat-it.onrender.com/api/v1/users/${user_id}/foods`)
+    fetch(`https://can-lily-eat-it.onrender.com/api/v1/foods`, {
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        Authorization: `${token}`
+      }
+    })
     .then(response => response.json())
     .then(data => setFoods(data.data))
     .catch(err => console.log(err))
   }, []);
 
   useEffect(() => {
-    fetch(`https://can-lily-eat-it.onrender.com/api/v1/users/${user_id}/allergens`)
+    fetch(`https://can-lily-eat-it.onrender.com/api/v1/allergens`, {
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        Authorization: `${token}`
+      }
+    })
     .then(response => response.json())
     .then(data => setExistingAllergens(data.data))
     .catch(err => console.log(err))
@@ -51,13 +63,14 @@ function ProfilePage() {
     getGoodFoods();
   }, [foods]);
 
-  const deleteSavedFood = (user_id, food_id) => {
+  const deleteSavedFood = (food_id) => {
     // fetch(`https://27965142-cb65-4b7c-9f97-05e599e7c347.mock.pstmn.io/api/v1/users/${userId}/foods/${allergen.foodId}`, {
-    fetch(`https://can-lily-eat-it.onrender.com/api/v1/users/${user_id}/foods/${food_id}`, {
+    fetch(`https://can-lily-eat-it.onrender.com/api/v1/foods/${food_id}`, {
       method: 'DELETE',
       headers: {
         Accept: 'application/json',
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        Authorization: `${token}`
       }
     })
     .then((response) => {
@@ -71,8 +84,8 @@ function ProfilePage() {
     .catch(err => console.log(err))
   }
 
-  const handleDelete = (user_id, food_id) => {
-    deleteSavedFood(user_id, food_id);
+  const handleDelete = (food_id) => {
+    deleteSavedFood(food_id);
     console.log("deleted")
   };
 
@@ -85,8 +98,8 @@ function ProfilePage() {
         { (badFoods && badFoods.length != 0) ?
             badFoods.map((food) => (
               <>
-                <FoodCard result={food} extraClass={"-profile"} userId={user_id} />
-                <button className="unsave-food-button" onClick={() => {handleDelete(user_id, food.id)}}>Unsave Food</button>
+                <FoodCard result={food} extraClass={"-profile"} userToken={token} />
+                <button className="unsave-food-button" onClick={() => {handleDelete(food.id)}}>Unsave Food</button>
               </>
             ))
           :
@@ -102,8 +115,8 @@ function ProfilePage() {
         { (goodFoods && goodFoods.length != 0) ?
             goodFoods.map((food) => (
               <>
-                <FoodCard key={food.id} result={food} extraClass={"-profile"} userId={user_id} />
-                <button className="unsave-food-button" onClick={() => {handleDelete(user_id, food.id)}}>Unsave Food</button>
+                <FoodCard key={food.id} result={food} extraClass={"-profile"} userToken={token} />
+                <button className="unsave-food-button" onClick={() => {handleDelete(food.id)}}>Unsave Food</button>
               </>
             ))
           :
@@ -129,7 +142,7 @@ function ProfilePage() {
 
   return (
     <>
-      <MainHeading userId={user_id}/>
+      <MainHeading userToken={token}/>
       <div className="profile-page">
         <div className="tab-buttons">
           <TabButton className="tab-button" buttonName="Bad Foods" isSelected={selectedFoods === "bad"} onSelect={() => handleSelect("bad")} />

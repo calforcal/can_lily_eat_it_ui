@@ -46,6 +46,9 @@ function RegisterForm({ setFormFilled, setUserData }) {
       }
     })
     .then((data) => {
+      localStorage.setItem("user", JSON.stringify(data.data));
+      localStorage.setItem("token", data.data.token);
+      window.history.pushState(data.user, "", "/profile")
       setUserData(data.data)
     })
     .catch((err) => console.log(err))

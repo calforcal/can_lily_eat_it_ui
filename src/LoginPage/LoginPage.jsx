@@ -41,6 +41,9 @@ function LoginPage() {
       // return response.json()
     })
     .then((data) => {
+      localStorage.setItem("user", JSON.stringify(data.data));
+      localStorage.setItem("token", data.data.token);
+      window.history.pushState(data.user, "", "/profile")
       setUserData(data.data)
     })
     .catch((err) => console.log(err))
@@ -48,7 +51,7 @@ function LoginPage() {
 
   useEffect(() => {
     if (userData) {
-      navigate("/profile", { state: userData.id });
+      navigate("/profile", { state: userData.token });
     }
   }, [userData, navigate]);
 

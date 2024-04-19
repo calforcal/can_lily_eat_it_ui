@@ -14,17 +14,18 @@ function RegisterPage() {
   const [userData, setUserData] = useState();
 
   const saveUserSelections = () => {
-    fetch(`https://can-lily-eat-it.onrender.com/api/v1/users/${userData.id}/allergens`, {
+    fetch(`https://can-lily-eat-it.onrender.com/api/v1/allergens`, {
       method: 'POST',
       headers: {
         Accept: 'application/json',
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        Authorization: `${userData.token}`
       },
       body: JSON.stringify({allergens: userAllergens.join()})
     })
     .then((response) => {
       if (response.status == 201) {
-        navigate("/profile", { state: userData.id })
+        navigate("/profile", { state: userData.token })
       }
     })
     .catch((err) => console.log(err))

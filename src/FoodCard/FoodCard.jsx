@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "./FoodCard.css"
 import TabButton from "../TabButton/TabButton";
 
-function FoodCard({result, extraClass, userId}) {
+function FoodCard({result, extraClass, userToken}) {
 
   const [savedFood, setSavedFood] = useState(false);
   const [selectedTopic, setSelectedTopic] = useState();
@@ -58,11 +58,12 @@ function FoodCard({result, extraClass, userId}) {
 
   const postSavedFood = () => {
     // fetch(`https://27965142-cb65-4b7c-9f97-05e599e7c347.mock.pstmn.io/api/v1/users/${userId}/foods`, {
-    fetch(`https://can-lily-eat-it.onrender.com/api/v1/users/${userId}/foods`, {
+    fetch(`https://can-lily-eat-it.onrender.com/api/v1/foods`, {
       method: 'POST',
       headers: {
         Accept: 'application/json',
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        Authorization: `${userToken}`
       },
       body: JSON.stringify(foodData)
     })
@@ -78,7 +79,7 @@ function FoodCard({result, extraClass, userId}) {
 
   useEffect(() => {
     if (savedFood) {
-      navigate("/profile", { state: userId });
+      navigate("/profile", { state: userToken });
     }
   }, [savedFood]);
 
@@ -101,7 +102,7 @@ function FoodCard({result, extraClass, userId}) {
         </div>
         <div className="tab-content">{tabContent}</div>
         {
-          userId && extraClass != "-profile"
+          userToken && extraClass != "-profile"
           ?
           <button className="save-food-button" onClick={() => {handleSave()}}>Save Food</button>
           :
