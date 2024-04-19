@@ -63,7 +63,7 @@ function FoodCard({result, extraClass, userToken}) {
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json',
-        Authorization: `${userToken}`
+        Authorization: {userToken}
       },
       body: JSON.stringify(foodData)
     })

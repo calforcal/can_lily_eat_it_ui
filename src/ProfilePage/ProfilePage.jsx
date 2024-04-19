@@ -23,7 +23,7 @@ function ProfilePage() {
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json',
-        Authorization: `${token}`
+        Authorization: {token}
       }
     })
     .then(response => response.json())
@@ -36,7 +36,7 @@ function ProfilePage() {
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json',
-        Authorization: `${token}`
+        Authorization: {token}
       }
     })
     .then(response => response.json())
@@ -70,7 +70,7 @@ function ProfilePage() {
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json',
-        Authorization: `${token}`
+        Authorization: {token}
       }
     })
     .then((response) => {

@@ -11,7 +11,7 @@ function UpcSearchBar({ userAllergens, setResult, userId}) {
       headers: {
       Accept: 'application/json',
       'Content-Type': 'application/json',
-      Authorization: `${userToken}`
+      Authorization: {userToken}
       },
     })
     .then((response) => {
