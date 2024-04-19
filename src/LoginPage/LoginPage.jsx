@@ -46,7 +46,7 @@ function LoginPage() {
         localStorage.setItem("user", JSON.stringify(data.data));
         localStorage.setItem("token", data.data.token);
         dispatch({ type: "LOGIN_SUCCESS", data });
-        window.history.pushState(data.user, "", "/profile")
+        window.history.pushState(data.data, "", "/profile")
         setUserData(data.data)
       })
       .catch((err) => console.log(err))
