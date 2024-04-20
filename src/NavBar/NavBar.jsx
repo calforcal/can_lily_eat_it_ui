@@ -1,20 +1,34 @@
 import CheckBoxDrawer from "../CheckBoxDrawer/CheckBoxDrawer";
 import "./NavBar.css"
 import { Link } from "react-router-dom"
+import { useState, useEffect } from "react"
 
 function NavBar() {
 
+  const [loggedIn, setLoggedIn] = useState();
+
   const logOutUser = () => {
-		this.props.logOutUser();
 		localStorage.removeItem("token");
 		localStorage.removeItem("user");
-		window.history.back();
 	};
+
+  const checkLoggedInStatus = () => {
+    if (localStorage.token == null) {
+      setLoggedIn(false);
+    }
+    else {
+      setLoggedIn(true);
+    }
+  }
+
+  useEffect(() => {
+    checkLoggedInStatus();
+  })
 
   return (
     <>
       {
-        localStorage.token ?
+        loggedIn ?
         <div className="links-container">
           <Link className="profile-link" to="/profile" >Profile</Link>
           <Link className="about-link" to="/about" >About</Link>

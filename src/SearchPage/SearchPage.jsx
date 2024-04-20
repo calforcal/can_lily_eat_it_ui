@@ -9,6 +9,7 @@ import { useLocation } from "react-router-dom";
 function SearchPage() {
 
   const location = useLocation();
+  const [loggedIn, setLoggedIn] = useState();
   const [userAllergens, setUserAllergens] = useState([]);
 
   const [result, setResult] = useState();
@@ -25,6 +26,19 @@ function SearchPage() {
     renderMe = <p className="pre-search-placeholder">Search for an Item!</p>
   };
 
+  const checkLoggedInStatus = () => {
+    if (localStorage.token == undefined) {
+      setLoggedIn(false);
+    }
+    else {
+      setLoggedIn(true);
+    }
+  }
+
+  useEffect(() => {
+    checkLoggedInStatus();
+  })
+
   return (
     <>
       <MainHeading />
@@ -33,7 +47,7 @@ function SearchPage() {
           <div className="search-container">
             <UpcSearchBar userAllergens={userAllergens} setResult={setResult} />
             {
-              localStorage.token ?
+              loggedIn ?
               <></>
               :
               <CheckBoxForm setUserAllergens={setUserAllergens}/>
