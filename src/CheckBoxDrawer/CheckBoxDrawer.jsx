@@ -6,7 +6,7 @@ import Button from '@mui/material/Button';
 import CheckBoxForm from '../CheckBoxForm/CheckBoxForm';
 import SettingsIcon from '@mui/icons-material/Settings';
 
-function CheckBoxDrawer({ userToken }) {
+function CheckBoxDrawer() {
   const [open, setOpen] = useState(false);
   const [userAllergens, setUserAllergens] = useState([]);
 
@@ -16,13 +16,13 @@ function CheckBoxDrawer({ userToken }) {
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json',
-        Authorization: {userToken}
+        Authorization: localStorage.token
       },
       body: JSON.stringify({allergens: userAllergens.join()})
     })
     .then((response) => {
       if (response.status == 201) {
-        navigate("/profile", { state: userToken })
+        navigate("/profile")
       }
       else if (response.status == 200) {
         setOpen(false);

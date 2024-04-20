@@ -1,11 +1,8 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import MainHeading from "../MainHeading/MainHeading";
 import "./RegisterForm.css"
 
 function RegisterForm({ setFormFilled, setUserData }) {
-
-  const navigate = useNavigate();
   
   const [email, setEmail] = useState();
   const [name, setName] = useState();

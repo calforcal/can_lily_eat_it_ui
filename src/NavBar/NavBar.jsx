@@ -2,7 +2,7 @@ import CheckBoxDrawer from "../CheckBoxDrawer/CheckBoxDrawer";
 import "./NavBar.css"
 import { Link } from "react-router-dom"
 
-function NavBar({userToken}) {
+function NavBar() {
 
   const logOutUser = () => {
 		this.props.logOutUser();
@@ -14,13 +14,13 @@ function NavBar({userToken}) {
   return (
     <>
       {
-        userToken ?
+        localStorage.token ?
         <div className="links-container">
-          <Link className="profile-link" to="/profile" state={userToken}>Profile</Link>
-          <Link className="about-link" to="/about" state={userToken}>About</Link>
-          <Link className="search-link" to="/search" state={userToken}>Search</Link>
+          <Link className="profile-link" to="/profile" >Profile</Link>
+          <Link className="about-link" to="/about" >About</Link>
+          <Link className="search-link" to="/search" >Search</Link>
           <Link className="logout-link" to="/" onClick={() => {logOutUser()}}>Log Out</Link>
-          <CheckBoxDrawer className="gear-icon" userToken={userToken} />
+          <CheckBoxDrawer className="gear-icon" />
         </div>
         :
         <div className="links-container">

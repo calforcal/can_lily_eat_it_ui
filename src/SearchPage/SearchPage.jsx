@@ -9,19 +9,14 @@ import { useLocation } from "react-router-dom";
 function SearchPage() {
 
   const location = useLocation();
-  const [userToken, setUserToken] = useState(null);
   const [userAllergens, setUserAllergens] = useState([]);
-
-  useEffect(() => {
-    setUserToken(location.state)
-  }, [])
 
   const [result, setResult] = useState();
 
   let renderMe;
 
   if (result && result.data) {
-    renderMe = <FoodCard result={result.data} extraClass="-search" userToken={userToken} />
+    renderMe = <FoodCard result={result.data} extraClass="-search" />
   } 
   else if (result) {
     renderMe = <p className="not-found-search">No Item was found with that Code. Please try again.</p>
@@ -32,13 +27,13 @@ function SearchPage() {
 
   return (
     <>
-      <MainHeading userToken={userToken}/>
+      <MainHeading />
       <div className="search-page">
         <div className="search-and-result-container">
           <div className="search-container">
-            <UpcSearchBar userAllergens={userAllergens} setResult={setResult} userToken={userToken} />
+            <UpcSearchBar userAllergens={userAllergens} setResult={setResult} />
             {
-              userToken ?
+              localStorage.token ?
               <></>
               :
               <CheckBoxForm setUserAllergens={setUserAllergens}/>

@@ -98,7 +98,7 @@ function ProfilePage() {
         { (badFoods && badFoods.length != 0) ?
             badFoods.map((food) => (
               <>
-                <FoodCard result={food} extraClass={"-profile"} userToken={localStorage.token} />
+                <FoodCard result={food} extraClass={"-profile"} />
                 <button className="unsave-food-button" onClick={() => {handleDelete(food.id)}}>Unsave Food</button>
               </>
             ))
@@ -115,7 +115,7 @@ function ProfilePage() {
         { (goodFoods && goodFoods.length != 0) ?
             goodFoods.map((food) => (
               <>
-                <FoodCard key={food.id} result={food} extraClass={"-profile"} userToken={localStorage.token} />
+                <FoodCard key={food.id} result={food} extraClass={"-profile"} />
                 <button className="unsave-food-button" onClick={() => {handleDelete(food.id)}}>Unsave Food</button>
               </>
             ))
@@ -142,7 +142,7 @@ function ProfilePage() {
 
   return (
     <>
-      <MainHeading userToken={localStorage.token}/>
+      <MainHeading />
       <div className="profile-page">
         <div className="tab-buttons">
           <TabButton className="tab-button" buttonName="Bad Foods" isSelected={selectedFoods === "bad"} onSelect={() => handleSelect("bad")} />

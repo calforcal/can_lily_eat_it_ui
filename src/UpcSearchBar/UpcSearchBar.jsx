@@ -1,7 +1,7 @@
 import "./UpcSearchBar.css"
 import { useState } from "react";
 
-function UpcSearchBar({ userAllergens, setResult, userId}) {
+function UpcSearchBar({ userAllergens, setResult}) {
   const [input, setInput] = useState("");
 
   const fetchData = (value) => {
@@ -11,7 +11,7 @@ function UpcSearchBar({ userAllergens, setResult, userId}) {
       headers: {
       Accept: 'application/json',
       'Content-Type': 'application/json',
-      Authorization: {userToken}
+      Authorization: localStorage.token
       },
     })
     .then((response) => {

@@ -4,17 +4,9 @@ import './AboutPage.css'
 import { useLocation } from "react-router-dom";
 
 function AboutPage() {
-
-  const [userToken, setUserToken] = useState(null);
-  const location = useLocation();
-
-  useEffect(() => {
-    setUserToken(location.state)
-  }, [])
-
   return(
     <>
-      <MainHeading userToken={userToken}/>
+      <MainHeading />
       <div className='about-page'>
         <h1 className='about-title'>About Can Lily Eat It?</h1>
         <p className='about-info'>

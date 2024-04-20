@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "./FoodCard.css"
 import TabButton from "../TabButton/TabButton";
 
-function FoodCard({result, extraClass, userToken}) {
+function FoodCard({result, extraClass}) {
 
   const [savedFood, setSavedFood] = useState(false);
   const [selectedTopic, setSelectedTopic] = useState();
@@ -63,7 +63,7 @@ function FoodCard({result, extraClass, userToken}) {
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json',
-        Authorization: {userToken}
+        Authorization: localStorage.token
       },
       body: JSON.stringify(foodData)
     })
@@ -79,7 +79,7 @@ function FoodCard({result, extraClass, userToken}) {
 
   useEffect(() => {
     if (savedFood) {
-      navigate("/profile", { state: userToken });
+      navigate("/profile");
     }
   }, [savedFood]);
 
@@ -102,7 +102,7 @@ function FoodCard({result, extraClass, userToken}) {
         </div>
         <div className="tab-content">{tabContent}</div>
         {
-          userToken && extraClass != "-profile"
+          localStorage.token && extraClass != "-profile"
           ?
           <button className="save-food-button" onClick={() => {handleSave()}}>Save Food</button>
           :
