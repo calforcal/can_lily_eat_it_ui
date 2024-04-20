@@ -23,7 +23,7 @@ function ProfilePage() {
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json',
-        "Authorization": {token}
+        'Authorization': localStorage.token
       }
     })
     .then(response => response.json())
@@ -36,7 +36,7 @@ function ProfilePage() {
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json',
-        Authorization: {token}
+        'Authorization': localStorage.token
       }
     })
     .then(response => response.json())
@@ -70,7 +70,7 @@ function ProfilePage() {
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json',
-        Authorization: {token}
+        'Authorization': localStorage.token
       }
     })
     .then((response) => {
@@ -98,7 +98,7 @@ function ProfilePage() {
         { (badFoods && badFoods.length != 0) ?
             badFoods.map((food) => (
               <>
-                <FoodCard result={food} extraClass={"-profile"} userToken={token} />
+                <FoodCard result={food} extraClass={"-profile"} userToken={localStorage.token} />
                 <button className="unsave-food-button" onClick={() => {handleDelete(food.id)}}>Unsave Food</button>
               </>
             ))
@@ -115,7 +115,7 @@ function ProfilePage() {
         { (goodFoods && goodFoods.length != 0) ?
             goodFoods.map((food) => (
               <>
-                <FoodCard key={food.id} result={food} extraClass={"-profile"} userToken={token} />
+                <FoodCard key={food.id} result={food} extraClass={"-profile"} userToken={localStorage.token} />
                 <button className="unsave-food-button" onClick={() => {handleDelete(food.id)}}>Unsave Food</button>
               </>
             ))
@@ -142,7 +142,7 @@ function ProfilePage() {
 
   return (
     <>
-      <MainHeading userToken={token}/>
+      <MainHeading userToken={localStorage.token}/>
       <div className="profile-page">
         <div className="tab-buttons">
           <TabButton className="tab-button" buttonName="Bad Foods" isSelected={selectedFoods === "bad"} onSelect={() => handleSelect("bad")} />

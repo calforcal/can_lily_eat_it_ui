@@ -27,16 +27,20 @@ function HomePage() {
       else {
         return response.json()
       }
+      // return response.json()
     })
     .then((data) => {
+      localStorage.setItem("user", JSON.stringify(data.data));
+      localStorage.setItem("token", data.data.token);
+      window.history.pushState(data.data, "", "/profile")
       setUserData(data.data)
     })
-    .catch((err) => console.log(err))
+    .catch((err) => console.log(err))      
   };
 
   useEffect(() => {
     if (userData) {
-      navigate("/profile", { state: userData.id });
+      navigate("/profile", { state: userData.token });
     }
   }, [userData, navigate]);
 
