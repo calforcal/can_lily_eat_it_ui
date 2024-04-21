@@ -1,13 +1,28 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
+import YupPassword from "yup-password"
+import { useForm } from "react-hook-form"
 import "./RegisterForm.css"
 
 function RegisterForm({ setFormFilled, setUserData }) {
-  
   const [email, setEmail] = useState();
   const [name, setName] = useState();
   const [password, setPassword] = useState();
   const [passwordConfirmation, setPasswordConfirmation] = useState();
+
+  YupPassword(yup);
+
+  const schema = yup.object().shape({
+    name: yup.string().min(1).required(),
+    email: yup.string().email().required(),
+    password: yup.string().password().required(),
+    passwordConfirmation: yup.string().oneOf([yup.ref('password'), null], 'Passwords must match')
+  })
+
+  const { register, handleSubmit, formState: { errors }, reset } = useForm({
+    resolver: yupResolver(schema)
+  });
 
   const handleRegisterInfo = (type, value) => {
     if (type == "email") {
@@ -24,7 +39,7 @@ function RegisterForm({ setFormFilled, setUserData }) {
     }
   };
 
-  const makeApiCall = async (email, name, password, passwordConfirmation) => {
+  const makeApiCall = async () => {
     fetch('https://can-lily-eat-it.onrender.com/api/v1/users', {
       method: 'POST',
       headers: {
@@ -36,7 +51,7 @@ function RegisterForm({ setFormFilled, setUserData }) {
     .then((response) => {
       if (!response.ok) {
         setFormFilled(false);
-        alert("Please check the information you entered and try again.")
+        alert("Email address is already taken. Please try again.")
       }
       else {
         return response.json()
@@ -45,23 +60,14 @@ function RegisterForm({ setFormFilled, setUserData }) {
     .then((data) => {
       localStorage.setItem("user", JSON.stringify(data.data));
       localStorage.setItem("token", data.data.token);
-      window.history.pushState(data.user, "", "/profile")
       setUserData(data.data)
+      setFormFilled(true);
     })
     .catch((err) => console.log(err))
   };
 
-  // useEffect(() => {
-  //   // Check if userData is not null before navigating
-  //   if (userData) {
-  //     navigate("/profile", { state: userData.id });
-  //   }
-  // }, [userData, navigate]);
-
-  // Needs FIX: Button must be pressed twice for page redirect.
   const postUserRegistration = async () => {
-    await makeApiCall(email, name, password, passwordConfirmation);
-    setFormFilled(true)
+    await makeApiCall();
   };
 
   return (
@@ -71,12 +77,16 @@ function RegisterForm({ setFormFilled, setUserData }) {
           <h1 className="register-title">Register</h1>
           <p className="register-info">Please fill in this form to create an account.</p>
 
-          <input type="text" placeholder="Email" value={email} onChange={(e) => handleRegisterInfo("email", e.target.value)} required />
-          <input type="text" placeholder="Name" value={name} onChange={(e) => handleRegisterInfo("name", e.target.value)} required />
-          <input type="password" placeholder="Password" value={password} onChange={(e) => handleRegisterInfo("password", e.target.value)} required />
-          <input type="password" placeholder="Password Confirmation" value={passwordConfirmation} onChange={(e) => handleRegisterInfo("passwordConfirmation", e.target.value)} required />
+          <input {...register("email")} type="text" placeholder="Email" value={email} onChange={(e) => handleRegisterInfo("email", e.target.value)} required />
+          <p>{errors.email?.message}</p>
+          <input {...register("name")} type="text" placeholder="Name" value={name} onChange={(e) => handleRegisterInfo("name", e.target.value)} required />
+          <p>{errors.name?.message}</p>
+          <input {...register("password")} type="password" placeholder="Password" value={password} onChange={(e) => handleRegisterInfo("password", e.target.value)} required />
+          <p>{errors.password?.message}</p>
+          <input {...register("passwordConfirmation")} type="password" placeholder="Password Confirmation" value={passwordConfirmation} onChange={(e) => handleRegisterInfo("passwordConfirmation", e.target.value)} required />
+          <p>{errors.passwordConfirmation?.message}</p>
 
-          <button className="register-button" onClick={postUserRegistration}>Register</button>
+          <button className="register-button" onClick={handleSubmit(postUserRegistration)}>Register</button>
         </div>
         <div className="container-login-link">
         <a href="/login"><p>Already have an account?Sign in</p></a>
