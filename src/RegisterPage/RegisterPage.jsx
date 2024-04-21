@@ -19,13 +19,13 @@ function RegisterPage() {
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json',
-        Authorization: `${userData.token}`
+        Authorization: localStorage.token
       },
       body: JSON.stringify({allergens: userAllergens.join()})
     })
     .then((response) => {
       if (response.status == 201) {
-        navigate("/profile", { state: userData.token })
+        navigate("/profile")
       }
     })
     .catch((err) => console.log(err))
