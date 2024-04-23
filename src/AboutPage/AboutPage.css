@@ -1,0 +1,21 @@
+.about-page {
+  background-image: url("../../images/background_image-2.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100%;
+  min-height: 100vh;
+}
+
+.about-title {
+  font-size: 30px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 10px;
+}
+
+.about-info {
+  font-size: 20px;
+  text-align: center;
+  margin: 0 auto;
+  width: 50%;
+}
