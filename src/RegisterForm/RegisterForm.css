@@ -1,6 +1,13 @@
 .register-form-container {
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
+  padding-left: 35px;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
   align-items: center;
   width: 33%;
   height: 400px;
@@ -18,6 +25,7 @@
 
 .register-info {
   margin: 0px 5px 10px 5px;
+  text-align: center;
 }
 
 input {
@@ -37,4 +45,9 @@ input {
   height: 30px;
   width: 125px;
   background-color: rgb(29, 149, 254);
+}
+
+.container-login-link {
+  padding: 10px;
+  text-align: center;
 }
