@@ -39,7 +39,7 @@ function RegisterPage() {
           formFilled
           ?
           <div className="register-allergens">
-            <p className="heading">Select you Allergens</p>
+            <p className="heading">Select your Allergens</p>
             <CheckBoxForm setUserAllergens={setUserAllergens} extraClass="-register"/>
             <button className="checkbox-save-button" onClick={saveUserSelections}>Save Selections and Register</button>
           </div>
