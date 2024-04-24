@@ -84,6 +84,7 @@ a.skip-login-button {
   background-color: aliceblue;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
 
 .existing-user-container {
@@ -112,7 +113,7 @@ a.skip-login-button {
   margin: 40px;
   text-align: center;
   font-size: 20px;
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 .demo-profile-1:hover, .demo-profile-2:hover {
@@ -134,7 +135,7 @@ a.skip-login-button {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
   width: 50%;
   height: 500px;
   background-color: rgb(248, 248, 248);
@@ -147,4 +148,11 @@ a.skip-login-button {
 .demo-gif {
   width: 400px;
   height: 300px;
+  border-radius: 10px;
+  padding: 0px 0px 10px 0px;
+}
+
+.demo-gif-title {
+  font-size: 24px;
+  padding: 10px;
 }

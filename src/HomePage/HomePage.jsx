@@ -99,8 +99,8 @@ function HomePage() {
               </div>
             </div>
             <div className="demo-gif-container">
-              <p>App Tutorial / Demo</p>
-              <img className="demo-gif" src="../../images/app-screenshot.jpeg"/>
+              <p className="demo-gif-title">App Tutorial / Demo</p>
+              <img className="demo-gif" src="../../images/clei-demo-gif.gif"/>
             </div>
           </div>
         </div>

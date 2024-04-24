@@ -65,6 +65,7 @@ li {
 
 .food-item-profile {
   font-size: 30px;
+  text-align: center;
 }
 
 .ingredients-label-profile, .allergens-label-profile, .can-lily-eat-it-label-profile {
@@ -91,6 +92,7 @@ li {
   height: 30px;
   width: 125px;
   background-color: aliceblue;
+  cursor: pointer;
 }
 
 .inactive {
@@ -101,6 +103,7 @@ li {
   width: 150px;
   margin: 20px;
   background-color: aliceblue;
+  cursor: pointer;
 }
 
 .active {
@@ -111,6 +114,7 @@ li {
   width: 150px;
   margin: 20px;
   background-color: rgb(127, 157, 184);
+  cursor: pointer;
 }
 
 .tab-content {
