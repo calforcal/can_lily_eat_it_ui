@@ -60,7 +60,11 @@ function HomePage() {
     }
   }, [email, password])
 
-
+  useEffect(() => {
+    if (localStorage.token) {
+      navigate("/profile")
+    }
+  })
 
   return (
     <>
