@@ -50,7 +50,7 @@ function SearchPage() {
               loggedIn ?
               <></>
               :
-              <CheckBoxForm setUserAllergens={setUserAllergens}/>
+              <CheckBoxForm setUserAllergens={setUserAllergens} extraClass="-search"/>
             }
           </div>
           <div className="food-card-container">
