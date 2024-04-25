@@ -9,7 +9,6 @@ function UpcSearchBar({ userAllergens, setResult}) {
 
   const fetchData = (value) => {
     let stringAllergens = userAllergens.join(",")
-    // fetch(`https://27965142-cb65-4b7c-9f97-05e599e7c347.mock.pstmn.io/api/v1/allergens?upc=${value}`)
     fetch(`https://can-lily-eat-it.onrender.com/api/v1/upc_items?upc=${value}&allergens=${stringAllergens}`, {
       headers: {
       Accept: 'application/json',

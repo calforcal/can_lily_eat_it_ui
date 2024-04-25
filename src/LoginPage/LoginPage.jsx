@@ -22,7 +22,6 @@ function LoginPage() {
   };
 
   const makeApiCall = async (email, password) => {
-    // fetch('https://27965142-cb65-4b7c-9f97-05e599e7c347.mock.pstmn.io/api/v1/users', {
     fetch('https://can-lily-eat-it.onrender.com/api/v1/sessions', {
       method: 'POST',
       headers: {
@@ -38,7 +37,6 @@ function LoginPage() {
       else {
         return response.json()
       }
-      // return response.json()
     })
     .then((data) => {
       localStorage.setItem("user", JSON.stringify(data.data));

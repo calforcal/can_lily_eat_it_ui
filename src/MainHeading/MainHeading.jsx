@@ -1,7 +1,5 @@
 import "./MainHeading.css"
-import { useState } from "react"
 import NavBar from "../NavBar/NavBar"
-import { useSearchParams } from "react-router-dom";
 
 function MainHeading() {
 

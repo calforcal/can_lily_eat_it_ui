@@ -1,7 +1,5 @@
 import MainHeading from '../MainHeading/MainHeading';
-import { useState, useEffect } from 'react';
 import './AboutPage.css'
-import { useLocation } from "react-router-dom";
 
 function AboutPage() {
   return(

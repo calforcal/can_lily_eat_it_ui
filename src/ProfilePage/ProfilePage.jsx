@@ -1,16 +1,13 @@
 import { React, useEffect, useState } from "react";
 import "./ProfilePage.css"
-import { useLocation, Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import FoodCard from "../FoodCard/FoodCard";
 import MainHeading from "../MainHeading/MainHeading";
 import TabButton from "../TabButton/TabButton";
-import CheckBoxForm from "../CheckBoxForm/CheckBoxForm";
-import { render } from "react-dom";
 
 function ProfilePage() {
 
   const location = useLocation();
-  const token = location.state;
   const [foods, setFoods] = useState();
   const [badFoods, setBadFoods] = useState();
   const [goodFoods, setGoodFoods] = useState();
@@ -18,7 +15,6 @@ function ProfilePage() {
   const [selectedFoods, setSelectedFoods] = useState();
 
   useEffect(() => {
-    // fetch(`https://27965142-cb65-4b7c-9f97-05e599e7c347.mock.pstmn.io/api/v1/users/${user_id}/foods`)
     fetch(`https://can-lily-eat-it.onrender.com/api/v1/foods`, {
       headers: {
         Accept: 'application/json',
@@ -64,7 +60,6 @@ function ProfilePage() {
   }, [foods]);
 
   const deleteSavedFood = (food_id) => {
-    // fetch(`https://27965142-cb65-4b7c-9f97-05e599e7c347.mock.pstmn.io/api/v1/users/${userId}/foods/${allergen.foodId}`, {
     fetch(`https://can-lily-eat-it.onrender.com/api/v1/foods/${food_id}`, {
       method: 'DELETE',
       headers: {
