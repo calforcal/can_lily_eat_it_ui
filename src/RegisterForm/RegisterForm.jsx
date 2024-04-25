@@ -42,7 +42,7 @@ function RegisterForm({ setFormFilled, setUserData }) {
     }
   };
 
-  const makeApiCall = async () => {
+  const postUserRegistration = async () => {
     fetch('https://can-lily-eat-it.onrender.com/api/v1/users', {
       method: 'POST',
       headers: {
@@ -69,8 +69,8 @@ function RegisterForm({ setFormFilled, setUserData }) {
     .catch((err) => console.log(err))
   };
 
-  const postUserRegistration = async () => {
-    await makeApiCall();
+  const handleUserRegistration = async () => {
+    await postUserRegistration();
   };
 
   return (
@@ -97,7 +97,7 @@ function RegisterForm({ setFormFilled, setUserData }) {
             <p>{errors.passwordConfirmation?.message}</p>
 
           </div>
-          <button className="register-button" onClick={handleSubmit(postUserRegistration)}>Register</button>
+          <button className="register-button" onClick={handleSubmit(handleUserRegistration)}>Register</button>
         </div>
         <div className="container-login-link">
           <a className="already-registered-link" href="/login"><p>Already have an account? Sign in</p></a>

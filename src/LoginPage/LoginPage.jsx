@@ -9,7 +9,6 @@ function LoginPage() {
   
   const [email, setEmail] = useState()
   const [password, setPassword] = useState()
-  const [formData, setFormData] = useState()
   const [userData, setUserData] = useState()
 
   const handleRegisterInfo = (type, value) => {
@@ -21,7 +20,7 @@ function LoginPage() {
     }
   };
 
-  const makeApiCall = async (email, password) => {
+  const postUserLogIn = async (email, password) => {
     fetch('https://can-lily-eat-it.onrender.com/api/v1/sessions', {
       method: 'POST',
       headers: {
@@ -54,7 +53,7 @@ function LoginPage() {
   }, [userData, navigate]);
 
   const postUserRegistration = async () => {
-    await makeApiCall(email, password);
+    await postUserLogIn(email, password);
   };
 
   return (

@@ -7,7 +7,7 @@ import InfoIcon from '@mui/icons-material/Info';
 function UpcSearchBar({ userAllergens, setResult}) {
   const [input, setInput] = useState("");
 
-  const fetchData = (value) => {
+  const getUpcInfo = (value) => {
     let stringAllergens = userAllergens.join(",")
     fetch(`https://can-lily-eat-it.onrender.com/api/v1/upc_items?upc=${value}&allergens=${stringAllergens}`, {
       headers: {
@@ -33,7 +33,7 @@ function UpcSearchBar({ userAllergens, setResult}) {
   }
 
   const handleSubmit = () => {
-    fetchData(input);
+    getUpcInfo(input);
   };
 
   return (

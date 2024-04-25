@@ -10,7 +10,7 @@ function HomePage() {
   const [password, setPassword] = useState();
   const [userData, setUserData] = useState();
 
-  const makeApiCall = (email, password) => {
+  const postUserLogIn = (email, password) => {
     fetch('https://can-lily-eat-it.onrender.com/api/v1/sessions', {
       method: 'POST',
       headers: {
@@ -54,7 +54,7 @@ function HomePage() {
 
   useEffect(() => {
     if (email && password) {
-      makeApiCall(email, password);
+      postUserLogIn(email, password);
     }
   }, [email, password])
 
