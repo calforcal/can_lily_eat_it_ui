@@ -4,11 +4,9 @@ import MainHeading from "../MainHeading/MainHeading";
 import FoodCard from "../FoodCard/FoodCard";
 import CheckBoxForm from "../CheckBoxForm/CheckBoxForm"
 import UpcSearchBar from "../UpcSearchBar/UpcSearchBar";
-import { useLocation } from "react-router-dom";
 
 function SearchPage() {
 
-  const location = useLocation();
   const [loggedIn, setLoggedIn] = useState();
   const [userAllergens, setUserAllergens] = useState([]);
 
